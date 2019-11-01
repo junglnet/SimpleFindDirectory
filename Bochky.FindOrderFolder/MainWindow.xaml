@@ -1,0 +1,68 @@
+﻿<Window x:Class="Bochky.FindOrderFolder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bochky.FindOrderFolder"
+        mc:Ignorable="d"        
+        Title="Bochky. Поиск заказа клиента" Height="300" Width="400">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="SimpleButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="Verdana" />           
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style x:Key="SimpleTextBox" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="SimpleLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="MinHeight" Value="30" />            
+        </Style>
+        <Style x:Key="ErrorTextBlock" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="MaxHeight" Value="50" />            
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="Margin" Value="0 5 0 5" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Margin=" 10">
+            <Grid.RowDefinitions>              
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <Label Content="Поисковый запрос (ВВ55555 или 55555 или Иванов): " Style="{StaticResource SimpleLabel}"/>
+                <TextBox Style="{StaticResource SimpleTextBox}"  Text="{Binding Request, Mode=TwoWay}"/>
+                <Label Content="Глубина поиска: " Style="{StaticResource SimpleLabel}"/>
+                <TextBox Style="{StaticResource SimpleTextBox}"  Text="{Binding MaxIteration, Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding ErrorMessage}"/>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="33*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Отмена" Style="{StaticResource SimpleButton}"/>
+                <Button Grid.Column="2" Content="Найти и открыть" Style="{StaticResource SimpleButton}" Command="{Binding FindCommand}"/>
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+</Window>
