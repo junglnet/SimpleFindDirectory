@@ -25,7 +25,7 @@ namespace Bochky.FindOrderFolder.Tests
         public async Task FindnewTest()
         {
 
-            var findEngle = new FindEngle(await LoadFindFolderService.LoadDirectoriesAsync(Environment.CurrentDirectory + "\\" + "Test.txt"));
+            var findEngle = new SearchEngine(await LoadFindFolderService.LoadDirectoriesAsync(Environment.CurrentDirectory + "\\" + "Test.txt"));
 
             var findRequest1 = new FindRequest("32446");
 

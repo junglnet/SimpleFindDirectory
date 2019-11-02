@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Bochky.FindOrderFolder.Common;
 using Bochky.FindOrderFolder.Logic;
@@ -10,32 +13,38 @@ namespace Bochky.FindOrderFolder
         private string request;
         private string message;
         private int itetationLevel;
+        private Folder currentFolder;
 
         public MainViewModel()
         {
-
+            // defaults
             ItetationLevel = 1;
 
+            Folders = new ObservableCollection<Folder>();
+
             FindCommand = AsyncCommand.Create(async (token) => {
+
+                try  
+                {
+
+                    await FindAsync(token);
+
+                }
+
+                catch (Exception ex)
+                {
+
+                    Message = ex.Message;
+                }
+                
+            });
+
+            OpenItemCommand = AsyncCommand.Create(async (token) => {
 
                 try
                 {
 
-                    Message = null;
-
-                    var findEngle = new SearchEngine(
-                        await LoadFindFolderService.LoadDirectoriesAsync(
-                            Environment.CurrentDirectory + "\\" + "FindFolder.cfg"));
-
-                    var searchResult 
-                        = await findEngle.FindAsync(
-                            new FindRequest(Request ?? ""), ItetationLevel, token);
-
-                    if (await ResultProcessingService.ResultProcessing(searchResult))                    
-                        Message = "Найдено совпадение.";                        
-                                            
-                    else
-                        Message = "Ничего не найдено. Попробуйте увеличить глубину.";
+                    await OpenItem(CurrentFolder, token);
 
                 }
 
@@ -45,9 +54,61 @@ namespace Bochky.FindOrderFolder
                     Message = ex.Message;
                 }
 
-               
-
             });
+        }
+
+        private async Task FindAsync(CancellationToken token)
+        {
+            Message = null;
+
+            Folders.Clear();
+
+            var findEngle = new SearchEngine(
+                await LoadFindFolderService.LoadDirectoriesAsync(
+                    Environment.CurrentDirectory + "\\" + "FindFolder.cfg"));
+
+            var searchResult
+                = await findEngle.FindAsync(
+                    new FindRequest(Request ?? ""), ItetationLevel, token);
+
+            
+            if (ResultProcessingService.ResultProcessing(searchResult))
+            {
+                Message = "Найдено совпадение.";
+
+                foreach(var item in searchResult.FindDirectories)
+                {
+                    Folders.Add(item);
+                }
+
+            }
+                
+
+            else
+                Message = "Ничего не найдено. Попробуйте увеличить глубину.";
+        }
+
+        private async Task OpenItem(Folder folder, CancellationToken token)
+        {
+            
+            if (folder == null) return;
+
+            await ResultProcessingService.OpenDirectory(folder, token);            
+
+        }
+
+        public ObservableCollection<Folder> Folders { get; set; }
+
+        public Folder CurrentFolder
+        {
+            get => currentFolder;
+
+            set
+            {
+                currentFolder = value;
+
+                OnPropertyChanged();
+            }
         }
 
         public string Request
@@ -95,7 +156,7 @@ namespace Bochky.FindOrderFolder
 
         public ICommand FindCommand { get; }
         
-        public ICommand CancelCommand { get; }
+        public ICommand OpenItemCommand { get; }
 
     }
 }

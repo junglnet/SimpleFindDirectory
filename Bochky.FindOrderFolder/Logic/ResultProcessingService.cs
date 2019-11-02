@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bochky.FindOrderFolder.Logic
@@ -9,25 +10,26 @@ namespace Bochky.FindOrderFolder.Logic
     public class ResultProcessingService
     {
 
-        public static async Task<bool> ResultProcessing(SearchResult searchResult)
+        public static bool ResultProcessing(SearchResult searchResult)
         {
 
             if (searchResult == null)
                 throw new ArgumentNullException(nameof(searchResult));
 
-            if (searchResult.FindDirectories.Count > 0)
-            {
-                await Task.Run(() => Process.Start(
-                            "explorer", searchResult.FindDirectories.First().DirectoryName));
-
-                return true;
-            }
-
-            else
-                return false;
-
-            
+            return searchResult.FindDirectories.Count > 0 ? true : false;
+                       
         }
 
+        public static async Task OpenDirectory(Folder folder, CancellationToken token)
+        {
+            if (token.IsCancellationRequested)
+                return;
+
+            if (folder == null)
+                throw new ArgumentNullException(nameof(folder));
+
+            await Task.Run(() => Process.Start(
+                            "explorer", folder.DirectoryName));
+        }
     }
 }

@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"             
         xmlns:local="clr-namespace:Bochky.FindOrderFolder"
         mc:Ignorable="d"        
         WindowStartupLocation="CenterScreen"       
-        Title="Bochky. Поиск заказа клиента" Height="300" Width="400" ResizeMode="NoResize">
+        Title="Bochky. Поиск заказа клиента" Height="450" Width="400" ResizeMode="NoResize">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -60,6 +61,36 @@
                 
                 <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding Message}"/>
                 
+                <ListView 
+                    Name="FoldersListView"
+                    SelectedItem="{Binding CurrentFolder}"
+                    ItemsSource="{Binding Folders}"                    
+                    MaxHeight="150">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn 
+                                    Header="Результаты поиска">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock 
+                                            MaxWidth="320"
+                                            Text="{Binding Path=FullDirectoryName}" 
+                                            TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                    <!--Обработка события двойной клик-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction
+                            Command="{Binding OpenItemCommand}"
+                            CommandParameter="{Binding ElementName=FoldersListView, Path=SelectedItem}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
+
             </StackPanel>
 
             <Grid Grid.Row="1">
@@ -73,7 +104,7 @@
                         Style="{StaticResource SimpleButton}"
                         Command="{Binding FindCommand.CancelCommand}"/>
                 <Button Grid.Column="2" 
-                        Content="Найти и открыть" 
+                        Content="Найти" 
                         Style="{StaticResource SimpleButton}" 
                         Command="{Binding FindCommand}"/>
             </Grid>
