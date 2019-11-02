@@ -24,11 +24,11 @@ namespace Bochky.FindOrderFolder
 
                 try
                 {
-                    var findEngle = new FindEngle(
+                    var findEngle = new SearchEngine(
                         await LoadFindFolderService.LoadDirectoriesAsync(
-                            Environment.CurrentDirectory + "\\" + "Test.txt"));
+                            Environment.CurrentDirectory + "\\" + "FindFolder.cnf"));
 
-                    var t = await findEngle.FindAsync(new FindRequest(Request), MaxIteration);
+                    var t = await findEngle.FindAsync(new FindRequest(Request), MaxIteration, token);
 
                     ErrorMessage = t.FindDirectories.Count.ToString();
 

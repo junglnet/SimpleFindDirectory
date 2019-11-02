@@ -87,7 +87,7 @@
     <Compile Include="Common\SearchResult.cs" />
     <Compile Include="Exceptions\MinLengthRequestException.cs" />
     <Compile Include="Interfaces\IAsyncCommand.cs" />
-    <Compile Include="Logic\FindEngle.cs" />
+    <Compile Include="Logic\SearchEngine.cs" />
     <Compile Include="Logic\LoadFindFolderService.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">

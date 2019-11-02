@@ -36,7 +36,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Margin=" 10">
@@ -58,8 +58,14 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="33*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Отмена" Style="{StaticResource SimpleButton}"/>
-                <Button Grid.Column="2" Content="Найти и открыть" Style="{StaticResource SimpleButton}" Command="{Binding FindCommand}"/>
+                <Button Grid.Column="0" 
+                        Content="Отмена" 
+                        Style="{StaticResource SimpleButton}"
+                        Command="{Binding FindCommand.CancelCommand}"/>
+                <Button Grid.Column="2" 
+                        Content="Найти и открыть" 
+                        Style="{StaticResource SimpleButton}" 
+                        Command="{Binding FindCommand}"/>
             </Grid>
 
         </Grid>
