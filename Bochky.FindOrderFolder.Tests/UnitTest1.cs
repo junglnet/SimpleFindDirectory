@@ -9,7 +9,7 @@ namespace Bochky.FindOrderFolder.Tests
     [TestClass]
     public class UnitTest1
     {
-        // [TestMethod]
+         [TestMethod]
         public async Task LoadFindFolderServiceTest()
         {
 

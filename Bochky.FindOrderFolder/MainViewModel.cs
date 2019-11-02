@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Bochky.FindOrderFolder.Common;
 using Bochky.FindOrderFolder.Logic;
@@ -12,32 +8,41 @@ namespace Bochky.FindOrderFolder
     public class MainViewModel : NotifyPropertyChanged
     {
         private string request;
-        private string errorMessage;
-        private int maxIteration;
+        private string message;
+        private int itetationLevel;
 
         public MainViewModel()
         {
 
-            MaxIteration = 1;
+            ItetationLevel = 1;
 
             FindCommand = AsyncCommand.Create(async (token) => {
 
                 try
                 {
+
+                    Message = null;
+
                     var findEngle = new SearchEngine(
                         await LoadFindFolderService.LoadDirectoriesAsync(
-                            Environment.CurrentDirectory + "\\" + "FindFolder.cnf"));
+                            Environment.CurrentDirectory + "\\" + "FindFolder.cfg"));
 
-                    var t = await findEngle.FindAsync(new FindRequest(Request), MaxIteration, token);
+                    var searchResult 
+                        = await findEngle.FindAsync(
+                            new FindRequest(Request ?? ""), ItetationLevel, token);
 
-                    ErrorMessage = t.FindDirectories.Count.ToString();
+                    if (await ResultProcessingService.ResultProcessing(searchResult))                    
+                        Message = "Найдено совпадение.";                        
+                                            
+                    else
+                        Message = "Ничего не найдено. Попробуйте увеличить глубину.";
 
                 }
 
                 catch (Exception ex)
                 {
 
-                    ErrorMessage = ex.Message;
+                    Message = ex.Message;
                 }
 
                
@@ -58,30 +63,30 @@ namespace Bochky.FindOrderFolder
             }
 
         }
-        public string ErrorMessage
+        public string Message
         {
 
-            get => errorMessage;
+            get => message;
 
             set
             {
-                errorMessage = value;
-
+                message = value;
+                
                 OnPropertyChanged();
             }
 
         }
 
-        public int MaxIteration
+        public int ItetationLevel
         {
 
-            get => maxIteration;
+            get => itetationLevel;
 
             set
             {
-               
-                maxIteration = value;
 
+                itetationLevel = value;
+                
                 OnPropertyChanged();
             }
 

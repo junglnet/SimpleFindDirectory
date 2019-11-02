@@ -1,9 +1,9 @@
 ﻿using Bochky.FindOrderFolder.Common;
+using Bochky.FindOrderFolder.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,8 +11,6 @@ namespace Bochky.FindOrderFolder.Logic
 {
     public  class SearchEngine
     {
-
-        // TODO: Add throw exception
 
         private readonly IReadOnlyList<Folder> _foldersToFinding;
                 
@@ -28,19 +26,27 @@ namespace Bochky.FindOrderFolder.Logic
         /// </summary>        
         public async Task<SearchResult> FindAsync(
             FindRequest findRequest, 
-            int maxIteration,
+            int itetationLevel,
             CancellationToken token = default)
         {
 
             if (token.IsCancellationRequested)
                 return null;
 
+            if (findRequest == null)
+                throw new ArgumentNullException(nameof(findRequest));
+
+            if (findRequest.Request.Length <= 3)
+                throw new MinLengthRequestException(3);
+
+            if (itetationLevel > 4)
+                throw new MaxLevelIterationException(4);
+
             var result = await Task.Run( ()=> FindFolderName(
                 findRequest, 
-                _foldersToFinding, 
-                maxIteration, 
-                token)); 
-            
+                _foldersToFinding,
+                itetationLevel, 
+                token));            
 
             return new SearchResult(result, findRequest);
         }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bochky.FindOrderFolder"
         mc:Ignorable="d"        
-        Title="Bochky. Поиск заказа клиента" Height="300" Width="400">
+        WindowStartupLocation="CenterScreen"       
+        Title="Bochky. Поиск заказа клиента" Height="300" Width="400" ResizeMode="NoResize">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -45,11 +46,20 @@
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <Label Content="Поисковый запрос (ВВ55555 или 55555 или Иванов): " Style="{StaticResource SimpleLabel}"/>
-                <TextBox Style="{StaticResource SimpleTextBox}"  Text="{Binding Request, Mode=TwoWay}"/>
+                
+                <Label Content="Поисковый запрос (ВВ55555 или 55555 или Иванов): " 
+                       Style="{StaticResource SimpleLabel}"/>
+                
+                <TextBox Style="{StaticResource SimpleTextBox}"  
+                         Text="{Binding Request, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
                 <Label Content="Глубина поиска: " Style="{StaticResource SimpleLabel}"/>
-                <TextBox Style="{StaticResource SimpleTextBox}"  Text="{Binding MaxIteration, Mode=TwoWay}"/>
-                <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding ErrorMessage}"/>
+
+                <TextBox Style="{StaticResource SimpleTextBox }"
+                         Text="{Binding ItetationLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding Message}"/>
+                
             </StackPanel>
 
             <Grid Grid.Row="1">

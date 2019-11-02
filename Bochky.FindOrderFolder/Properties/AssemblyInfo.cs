@@ -10,10 +10,10 @@ using System.Windows;
 [assembly: AssemblyTitle("Bochky.FindOrderFolder")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("StrongOwl")]
 [assembly: AssemblyProduct("Bochky.FindOrderFolder")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("StrongOwl")]
 [assembly: AssemblyCulture("")]
 
 // Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
