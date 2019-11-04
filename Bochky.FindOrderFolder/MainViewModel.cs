@@ -12,13 +12,13 @@ namespace Bochky.FindOrderFolder
     {
         private string request;
         private string message;
-        private int itetationLevel;
+        private bool isDeepSearch;
         private Folder currentFolder;
 
         public MainViewModel()
         {
             // defaults
-            ItetationLevel = 1;
+            IsDeepSearch = false;
 
             Folders = new ObservableCollection<Folder>();
 
@@ -69,7 +69,7 @@ namespace Bochky.FindOrderFolder
 
             var searchResult
                 = await findEngle.FindAsync(
-                    new FindRequest(Request ?? ""), ItetationLevel, token);
+                    new FindRequest(Request ?? ""), IsDeepSearch, token);
 
             
             if (ResultProcessingService.ResultProcessing(searchResult))
@@ -85,7 +85,7 @@ namespace Bochky.FindOrderFolder
                 
 
             else
-                Message = "Ничего не найдено. Попробуйте увеличить глубину.";
+                Message = "Ничего не найдено. Попробуйте углубленный поиск.";
         }
 
         private async Task OpenItem(Folder folder, CancellationToken token)
@@ -138,15 +138,15 @@ namespace Bochky.FindOrderFolder
 
         }
 
-        public int ItetationLevel
+        public bool IsDeepSearch
         {
 
-            get => itetationLevel;
+            get => isDeepSearch;
 
             set
             {
 
-                itetationLevel = value;
+                isDeepSearch = value;
                 
                 OnPropertyChanged();
             }

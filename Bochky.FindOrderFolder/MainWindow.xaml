@@ -33,6 +33,9 @@
             <Setter Property="Foreground" Value="Red" />
             <Setter Property="Margin" Value="0 5 0 5" />
         </Style>
+        <Style x:Key="CheckedStyle" TargetType="CheckBox">                       
+            <Setter Property="Margin" Value="0 5 0 5" />            
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -53,12 +56,14 @@
                 
                 <TextBox Style="{StaticResource SimpleTextBox}"  
                          Text="{Binding Request, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                
-                <Label Content="Глубина поиска: " Style="{StaticResource SimpleLabel}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Углубленный поиск " 
+                           Style="{StaticResource SimpleLabel}"/>
+                    <CheckBox 
+                        Style="{StaticResource CheckedStyle}"
+                        IsChecked="{Binding IsDeepSearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
 
-                <TextBox Style="{StaticResource SimpleTextBox }"
-                         Text="{Binding ItetationLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                
                 <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding Message}"/>
                 
                 <ListView 
