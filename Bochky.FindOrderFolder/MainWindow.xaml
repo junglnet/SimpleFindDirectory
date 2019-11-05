@@ -69,7 +69,8 @@
                 <ListView 
                     Name="FoldersListView"
                     SelectedItem="{Binding CurrentFolder}"
-                    ItemsSource="{Binding Folders}"                    
+                    ItemsSource="{Binding Folders}"
+                    VirtualizingPanel.IsVirtualizing="False"                    
                     MaxHeight="150">
                     <ListView.View>
                         <GridView>

@@ -61,18 +61,33 @@ namespace Bochky.FindOrderFolder.Logic
             if (token.IsCancellationRequested)
                 return new List<Folder>();
 
-            var foldersToFinding = searchFolderList.Select(item => item.DirectoryName).ToArray();
+           
+            // Спросить у Антона.
+            //foldersToFinding.AsParallel().ForAll(item =>
+            //{
 
-            // Создание списка вложенных директорий для каждой директории в foldersToFinding.
-            foldersToFinding.AsParallel().ForAll(item => {
+            //    if (token.IsCancellationRequested) return;
 
-                if (token.IsCancellationRequested) return;
+            //    var directoriesList = Directory.GetDirectories(item).AsParallel();
 
-                var directoriesList = Directory.GetDirectories(item);
+            //    directoriesList = directoriesList.Select(di => di.ToLower());
 
-                searchFolder = searchFolder.Concat(directoriesList.Select(di => di.ToLower())).ToArray();
+            //    searchFolder = searchFolder.Concat(directoriesList).ToArray();
 
-            });
+            //});
+
+            foreach(var item in searchFolderList.Select(item => item.DirectoryName))
+            {
+                if (token.IsCancellationRequested) break;
+
+                var directoriesList = Directory.GetDirectories(item).AsParallel();
+
+                directoriesList = directoriesList.Select(di => di.ToLower());
+
+                searchFolder = searchFolder.Concat(directoriesList).ToArray();
+            }
+
+            
 
             // Поиск во вложенных директориях соответствия поисковому запросу.          
             searchResult = searchFolder.Where(sf => sf.Contains(findRequest.Request)).ToArray();
