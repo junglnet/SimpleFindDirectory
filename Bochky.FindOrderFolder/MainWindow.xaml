@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Bochky.FindOrderFolder"
         mc:Ignorable="d"        
         WindowStartupLocation="CenterScreen"       
-        Title="Bochky. Поиск заказа клиента" Height="450" Width="400" ResizeMode="NoResize">
+        Title="Bochky. Поиск заказа клиента" Height="450" Width="400" ResizeMode="CanMinimize" ShowInTaskbar="True" >
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
