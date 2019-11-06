@@ -93,7 +93,7 @@ namespace Bochky.FindOrderFolder
             
             if (folder == null) return;
 
-            await ResultProcessingService.OpenDirectory(folder, token);            
+            await DirectoryOpener.OpenDirectory(folder, token);            
 
         }
 
