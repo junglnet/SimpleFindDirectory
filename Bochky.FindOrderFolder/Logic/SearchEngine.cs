@@ -122,16 +122,14 @@ namespace Bochky.FindOrderFolder.Logic
                 currentLevel += 1;
 
                 // Создание списка вложенных директорий для каждой директории в foldersToFinding.
-                foldersToFinding.AsParallel().ForAll(item =>
+                foreach (var item in foldersToFinding)
                 {
-
-                    if (token.IsCancellationRequested) return;
+                    if (token.IsCancellationRequested) break;
 
                     var directoriesList = Directory.GetDirectories(item);
 
                     searchFolder = searchFolder.Concat(directoriesList.Select(di => di.ToLower())).ToArray();
-
-                });
+                }
 
                 return FindFolderNameOnKnowLevel(findRequest,
                         searchFolder
@@ -195,16 +193,17 @@ namespace Bochky.FindOrderFolder.Logic
                 currentLevel += 1;
 
                 // Создание списка вложенных директорий для каждой директории в foldersToFinding.
-                foldersToFinding.AsParallel().ForAll(item =>
-                {
 
-                    if (token.IsCancellationRequested) return;
+                foreach(var item in foldersToFinding)
+                {
+                    if (token.IsCancellationRequested) break;
 
                     var directoriesList = Directory.GetDirectories(item);
 
                     searchFolder = searchFolder.Concat(directoriesList.Select(di => di.ToLower())).ToArray();
+                }
 
-                });
+               
 
                 return DeepFindFolderName(
                         findRequest,

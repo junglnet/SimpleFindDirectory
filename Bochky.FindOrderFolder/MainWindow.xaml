@@ -80,7 +80,7 @@
                                     <DataTemplate>
                                         <TextBlock 
                                             MaxWidth="320"
-                                            Text="{Binding Path=FullDirectoryName}" 
+                                            Text="{Binding Path=DirectoryName}" 
                                             TextWrapping="Wrap" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

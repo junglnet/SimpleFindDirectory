@@ -9,13 +9,9 @@ namespace Bochky.FindOrderFolder.Common
             
             DirectoryName = directoryName.ToLower();
 
-            FullDirectoryName = directoryName;
-
         }
 
         public string DirectoryName { get; }
-
-        public string FullDirectoryName { get; }
-
+        
     }
 }
