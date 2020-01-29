@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Bochky.FindOrderFolder.Logic
 {
@@ -19,9 +20,11 @@ namespace Bochky.FindOrderFolder.Logic
 
             if (folder == null)
                 throw new ArgumentNullException(nameof(folder));
-
+           
             await Task.Run(() => Process.Start(
-                            "explorer", folder.DirectoryName));
+                            "explorer", folder.DirectoryName.ToPath()));
+                        
+
         }
 
     }

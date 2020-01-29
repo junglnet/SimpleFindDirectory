@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Common\AsyncCommand.cs" />
     <Compile Include="Common\AsyncCommandBase.cs" />
+    <Compile Include="Common\Extension.cs" />
     <Compile Include="Common\Folder.cs" />
     <Compile Include="Common\FindRequest.cs" />
     <Compile Include="Common\NotifyPropertyChanged.cs" />
