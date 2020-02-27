@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace Bochky.FindOrderFolder.Common
+namespace Bochky.FindOrderFolder.Entities
 {
     public sealed class NotifyTaskCompletion<TResult> : INotifyPropertyChanged
     {

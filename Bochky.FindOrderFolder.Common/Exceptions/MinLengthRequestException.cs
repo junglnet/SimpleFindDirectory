@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bochky.FindOrderFolder.Exceptions
+namespace Bochky.FindOrderFolder.Common.Exceptions
 {
     public class MinLengthRequestException : Exception
     {

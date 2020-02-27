@@ -1,4 +1,4 @@
-﻿using Bochky.FindOrderFolder.Common;
+﻿using Bochky.FindOrderFolder.Common.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Bochky.FindOrderFolder.Logic
 {
+    /// <summary>
+    /// Класс реализует логику загрузки файла с настройками
+    /// </summary>
     public class LoadFindFolderService
     {
-        
+       
         public static async Task<IReadOnlyList<Folder>> LoadDirectoriesAsync(string path)
         {
             

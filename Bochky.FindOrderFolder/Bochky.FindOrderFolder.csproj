@@ -107,20 +107,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Common\AsyncCommand.cs" />
-    <Compile Include="Common\AsyncCommandBase.cs" />
-    <Compile Include="Common\Extension.cs" />
-    <Compile Include="Common\Folder.cs" />
-    <Compile Include="Common\FindRequest.cs" />
-    <Compile Include="Common\NotifyPropertyChanged.cs" />
-    <Compile Include="Common\NotifyTaskCompletion.cs" />
-    <Compile Include="Common\RelayCommand.cs" />
-    <Compile Include="Common\SearchResult.cs" />
-    <Compile Include="Exceptions\MinLengthRequestException.cs" />
+    <Compile Include="Entities\AsyncCommand.cs" />
+    <Compile Include="Entities\AsyncCommandBase.cs" />
+    <Compile Include="Entities\NotifyPropertyChanged.cs" />
+    <Compile Include="Entities\NotifyTaskCompletion.cs" />
+    <Compile Include="Entities\RelayCommand.cs" />
     <Compile Include="Interfaces\IAsyncCommand.cs" />
-    <Compile Include="Interfaces\IResultProcessingService.cs" />
     <Compile Include="Logic\DirectoryOpener.cs" />
-    <Compile Include="Logic\ResultProcessingService.cs" />
     <Compile Include="Logic\SearchEngine.cs" />
     <Compile Include="Logic\LoadFindFolderService.cs" />
     <Compile Include="MainViewModel.cs" />
@@ -166,6 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Google-Noto-Emoji-Objects-62941-card-file-box.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bochky.FindOrderFolder.Common\Bochky.FindOrderFolder.Common.csproj">
+      <Project>{f634a6fd-ad28-4471-a14b-a4ac629cc0f5}</Project>
+      <Name>Bochky.FindOrderFolder.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

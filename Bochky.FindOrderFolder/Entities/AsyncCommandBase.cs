@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Bochky.FindOrderFolder.Interfaces;
 
-namespace Bochky.FindOrderFolder.Common
+namespace Bochky.FindOrderFolder.Entities
 {
     public abstract class AsyncCommandBase : IAsyncCommand
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Bochky.FindOrderFolder.Common
+namespace Bochky.FindOrderFolder.Entities
 {
     public class RelayCommand : ICommand
     {

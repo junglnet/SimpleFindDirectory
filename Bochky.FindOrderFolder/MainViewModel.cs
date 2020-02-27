@@ -3,7 +3,9 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Bochky.FindOrderFolder.Common;
+using Bochky.FindOrderFolder.Common.Entities;
+using Bochky.FindOrderFolder.Common.Interfaces;
+using Bochky.FindOrderFolder.Entities;
 using Bochky.FindOrderFolder.Logic;
 
 namespace Bochky.FindOrderFolder
@@ -63,7 +65,7 @@ namespace Bochky.FindOrderFolder
 
             Folders.Clear();
 
-            var findEngle = new SearchEngine(
+            IFindService findEngle = new SearchEngine(
                 await LoadFindFolderService.LoadDirectoriesAsync(
                     Environment.CurrentDirectory + "\\" + "FindFolder.cfg"));
 
@@ -72,7 +74,7 @@ namespace Bochky.FindOrderFolder
                     new FindRequest(Request ?? ""), IsDeepSearch, token);
 
             
-            if (ResultProcessingService.ResultProcessing(searchResult))
+            if (searchResult.HaveResult)
             {
                 Message = "Найдено совпадение.";
 

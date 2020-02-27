@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Bochky.FindOrderFolder.Common
+namespace Bochky.FindOrderFolder.Entities
 {
     public class AsyncCommand<TResult> : AsyncCommandBase, INotifyPropertyChanged
     {

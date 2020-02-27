@@ -1,4 +1,4 @@
-﻿using Bochky.FindOrderFolder.Common;
+﻿using Bochky.FindOrderFolder.Common.Entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,6 +10,10 @@ using System.IO;
 
 namespace Bochky.FindOrderFolder.Logic
 {
+       
+    /// <summary>
+    /// Класс реализует логику открытия директории
+    /// </summary>
     public class DirectoryOpener
     {
 

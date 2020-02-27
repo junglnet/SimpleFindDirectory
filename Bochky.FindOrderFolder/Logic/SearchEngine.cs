@@ -1,5 +1,6 @@
-﻿using Bochky.FindOrderFolder.Common;
-using Bochky.FindOrderFolder.Exceptions;
+﻿using Bochky.FindOrderFolder.Common.Entities;
+using Bochky.FindOrderFolder.Common.Exceptions;
+using Bochky.FindOrderFolder.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,10 @@ using System.Threading.Tasks;
 
 namespace Bochky.FindOrderFolder.Logic
 {
-    public  class SearchEngine
+    /// <summary>
+    /// Класс реализует логику поиска 
+    /// </summary>
+    public class SearchEngine : IFindService
     {
 
         private readonly IReadOnlyList<Folder> _foldersToFinding;
@@ -45,7 +49,7 @@ namespace Bochky.FindOrderFolder.Logic
                     await Task.Run(
                         () => FindFolderNameOnKnowLevel(findRequest, _foldersToFinding, token));            
 
-            return new SearchResult(findResult, findRequest);
+            return new SearchResult(findResult, findRequest, findResult.Count > 0 ? true : false);
         }
 
         private IReadOnlyList<Folder> FindFolderName(

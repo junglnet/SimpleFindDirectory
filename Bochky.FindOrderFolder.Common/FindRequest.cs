@@ -1,5 +1,5 @@
 ﻿
-namespace Bochky.FindOrderFolder.Common
+namespace Bochky.FindOrderFolder.Common.Entities
 {
     public class FindRequest
     {
