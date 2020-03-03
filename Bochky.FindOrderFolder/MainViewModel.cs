@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Entities;
-using Bochky.FindDirectory.Logic;
 using Bochky.FindDirectory.Implementation;
 using Bochky.FindDirectory.Interfaces;
 using Bochky.FindDirectory.Services;
@@ -94,7 +93,7 @@ namespace Bochky.FindDirectory
             
             if (folder == null) return;
 
-            await DirectoryOpener.OpenDirectory(folder, token);            
+            await DirectoryOpenerService.OpenDirectory(folder, token);            
 
         }
 

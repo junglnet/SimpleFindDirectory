@@ -1,21 +1,17 @@
 ﻿using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.IO;
 
-namespace Bochky.FindDirectory.Logic
+namespace Bochky.FindDirectory.Services
 {
        
     /// <summary>
     /// Класс реализует логику открытия директории
     /// </summary>
-    public class DirectoryOpener
+    public class DirectoryOpenerService
     {
 
         public static async Task OpenDirectory(Folder folder, CancellationToken token)

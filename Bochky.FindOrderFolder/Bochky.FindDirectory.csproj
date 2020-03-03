@@ -142,7 +142,7 @@
     <Compile Include="Entities\RelayCommand.cs" />
     <Compile Include="Implementation\FindServiceClient.cs" />
     <Compile Include="Interfaces\IAsyncCommand.cs" />
-    <Compile Include="Logic\DirectoryOpener.cs" />
+    <Compile Include="Services\DirectoryOpenerService.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
