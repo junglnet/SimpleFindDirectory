@@ -8,10 +8,9 @@ using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Service.Core;
 
-
 namespace Bochky.FindDirectory.Service.Implementation
 {
-    public class FindService : IFindService
+    public class FindService : IFindServiceContract
     {
         private readonly SearchEngine _searchEngine;
         public FindService()

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Bochky.FindDirectory.Common.Interfaces
 {
     [ServiceContract]
-    public interface IFindService
+    public interface IFindServiceContract
     {
         [OperationContract]
         Task<SearchResult> FindAsync(
