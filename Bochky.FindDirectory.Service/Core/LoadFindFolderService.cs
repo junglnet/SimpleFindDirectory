@@ -32,7 +32,7 @@ namespace Bochky.FindDirectory.Service.Core
                 {
 
                     if ( Directory.Exists(line) )                                        
-                        directories.Add(new Folder { DirectoryName = line.ToLower() });
+                        directories.Add(new Folder(line.ToLower()));
                 }
             }
 

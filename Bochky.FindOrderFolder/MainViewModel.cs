@@ -70,7 +70,7 @@ namespace Bochky.FindDirectory
             Folders.Clear();
 
             var searchResult = await _findService.FindAsync(
-                     new FindRequest() { Request = Request ?? "", }, IsDeepSearch, token);
+                     new FindRequest(Request ?? ""), IsDeepSearch, token);
 
             if (searchResult.HaveResult)
             {

@@ -41,14 +41,8 @@ namespace Bochky.FindDirectory.Service.Core
                     await Task.Run(
                         () => FindFolderNameOnKnowLevel(findRequest, foldersToFinding, token));
 
-            return new SearchResult()
-            {
-                FindDirectories = findResult.ToArray(),
-                FindRequest = findRequest,
-                HaveResult = findResult.Count > 0 ? true : false
-            };
-
-            //return new SearchResult(findResult, findRequest, findResult.Count > 0 ? true : false);
+            return new SearchResult(findRequest, findResult, findResult.Count > 0 ? true : false);            
+           
         }
 
         private IReadOnlyList<Folder> FindFolderName(
@@ -97,7 +91,7 @@ namespace Bochky.FindDirectory.Service.Core
 
             return searchResult.Where(
                 f => f.Contains(findRequest.Request))
-                    ?.Select(item => new Folder() { DirectoryName = item.ToLower() })
+                    ?.Select(item => new Folder(item.ToLower()))
                     ?.ToList();
         }
 
@@ -137,7 +131,7 @@ namespace Bochky.FindDirectory.Service.Core
                 return FindFolderNameOnKnowLevel(findRequest,
                         searchFolder
                             .Where(item => item != null)
-                            .Select(item => new Folder() { DirectoryName = item.ToLower() })
+                            .Select(item => new Folder(item.ToLower()))
                             ?.ToList(),
                         token,
                         currentLevel,
@@ -186,7 +180,7 @@ namespace Bochky.FindDirectory.Service.Core
                 findRequest, 
                 foldersToFinding
                     .Where(item => item != null)
-                    .Select(item => new Folder() { DirectoryName = item.ToLower() })
+                    .Select(item => new Folder(item.ToLower()) )
                     ?.ToList(), token);
 
             searchResult = searchResult.Concat(lastSearchResult).ToArray();
@@ -212,7 +206,7 @@ namespace Bochky.FindDirectory.Service.Core
                         findRequest,
                         searchFolder
                             .Where(item => item != null)
-                            .Select(item => new Folder() { DirectoryName = item.ToLower() })
+                            .Select(item => new Folder(item.ToLower()))
                             ?.ToList(),
                         token,
                         currentLevel,

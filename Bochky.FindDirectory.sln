@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory", "Bochky.FindOrderFolder\Bochky.FindDirectory.csproj", "{EC6C8387-6A95-4695-8F1F-9095A471F68F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Tests", "Bochky.FindOrderFolder.Tests\Bochky.FindDirectory.Tests.csproj", "{84BD4819-1299-4259-B3D0-06E986C78E6F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Common", "Bochky.FindOrderFolder.Common\Bochky.FindDirectory.Common.csproj", "{F634A6FD-AD28-4471-A14B-A4AC629CC0F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Service", "Bochky.FindDirectory.Service\Bochky.FindDirectory.Service.csproj", "{590955F3-79F9-483C-9499-77C3E4E704EF}"
@@ -21,10 +19,6 @@ Global
 		{EC6C8387-6A95-4695-8F1F-9095A471F68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC6C8387-6A95-4695-8F1F-9095A471F68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC6C8387-6A95-4695-8F1F-9095A471F68F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84BD4819-1299-4259-B3D0-06E986C78E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84BD4819-1299-4259-B3D0-06E986C78E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84BD4819-1299-4259-B3D0-06E986C78E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84BD4819-1299-4259-B3D0-06E986C78E6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F634A6FD-AD28-4471-A14B-A4AC629CC0F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F634A6FD-AD28-4471-A14B-A4AC629CC0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F634A6FD-AD28-4471-A14B-A4AC629CC0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
