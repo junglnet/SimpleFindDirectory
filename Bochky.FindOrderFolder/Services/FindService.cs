@@ -5,6 +5,7 @@ using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Interfaces;
 using Bochky.FindDirectory.Common.Interfaces;
 using Microsoft.VisualStudio.Threading;
+using System;
 
 namespace Bochky.FindDirectory.Services
 {
@@ -19,8 +20,10 @@ namespace Bochky.FindDirectory.Services
         }
         
 
-        public Task<SearchResult> FindAsync(FindRequest findRequest, bool isDeepSearch, CancellationToken token) =>
-            _findServiceContract.FindAsync(findRequest, isDeepSearch).WithCancellation(token);
+        public Task<SearchResult> FindAsync(FindRequest findRequest, bool isDeepSearch, CancellationToken token) 
+            => _findServiceContract.FindAsync(findRequest, isDeepSearch).WithCancellation(token).WithTimeout(TimeSpan.FromSeconds(5));
+        
+            
 
 
     }
