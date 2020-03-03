@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EC6C8387-6A95-4695-8F1F-9095A471F68F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Bochky.FindOrderFolder</RootNamespace>
-    <AssemblyName>Bochky.FindOrderFolder</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Bochky.FindDirectory</RootNamespace>
+    <AssemblyName>Bochky.FindDirectory</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -29,6 +29,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,6 +77,9 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="RemoteServiceExtension">
+      <HintPath>.\RemoteServiceExtension.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -112,10 +116,9 @@
     <Compile Include="Entities\NotifyPropertyChanged.cs" />
     <Compile Include="Entities\NotifyTaskCompletion.cs" />
     <Compile Include="Entities\RelayCommand.cs" />
+    <Compile Include="Implementation\FindServiceClient.cs" />
     <Compile Include="Interfaces\IAsyncCommand.cs" />
     <Compile Include="Logic\DirectoryOpener.cs" />
-    <Compile Include="Logic\SearchEngine.cs" />
-    <Compile Include="Logic\LoadFindFolderService.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -161,9 +164,9 @@
     <Resource Include="Google-Noto-Emoji-Objects-62941-card-file-box.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bochky.FindOrderFolder.Common\Bochky.FindOrderFolder.Common.csproj">
+    <ProjectReference Include="..\Bochky.FindOrderFolder.Common\Bochky.FindDirectory.Common.csproj">
       <Project>{f634a6fd-ad28-4471-a14b-a4ac629cc0f5}</Project>
-      <Name>Bochky.FindOrderFolder.Common</Name>
+      <Name>Bochky.FindDirectory.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

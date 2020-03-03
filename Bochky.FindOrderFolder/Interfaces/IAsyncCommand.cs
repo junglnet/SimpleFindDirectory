@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Bochky.FindOrderFolder.Interfaces
+namespace Bochky.FindDirectory.Interfaces
 {
     public interface IAsyncCommand : ICommand
     {

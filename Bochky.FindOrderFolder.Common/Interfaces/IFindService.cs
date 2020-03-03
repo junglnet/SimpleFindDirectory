@@ -1,14 +1,17 @@
-﻿using Bochky.FindOrderFolder.Common.Entities;
+﻿using Bochky.FindDirectory.Common.Entities;
 using System.Threading;
 using System.Threading.Tasks;
+using System.ServiceModel;
+using System.Collections.Generic;
 
-namespace Bochky.FindOrderFolder.Common.Interfaces
+namespace Bochky.FindDirectory.Common.Interfaces
 {
+    [ServiceContract]
     public interface IFindService
     {
+        [OperationContract]
         Task<SearchResult> FindAsync(
-            FindRequest findRequest,
-            bool isDeepSearch,
-            CancellationToken token = default);
+            FindRequest findRequest,            
+            bool isDeepSearch);
     }
 }

@@ -9,9 +9,9 @@
     <ProjectGuid>{84BD4819-1299-4259-B3D0-06E986C78E6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bochky.FindOrderFolder.Tests</RootNamespace>
-    <AssemblyName>Bochky.FindOrderFolder.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Bochky.FindDirectory.Tests</RootNamespace>
+    <AssemblyName>Bochky.FindDirectory.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -21,6 +21,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,9 +58,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bochky.FindOrderFolder\Bochky.FindOrderFolder.csproj">
+    <ProjectReference Include="..\Bochky.FindDirectory.Service\Bochky.FindDirectory.Service.csproj">
+      <Project>{590955f3-79f9-483c-9499-77c3e4e704ef}</Project>
+      <Name>Bochky.FindDirectory.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bochky.FindOrderFolder.Common\Bochky.FindDirectory.Common.csproj">
+      <Project>{f634a6fd-ad28-4471-a14b-a4ac629cc0f5}</Project>
+      <Name>Bochky.FindDirectory.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bochky.FindOrderFolder\Bochky.FindDirectory.csproj">
       <Project>{ec6c8387-6a95-4695-8f1f-9095a471f68f}</Project>
-      <Name>Bochky.FindOrderFolder</Name>
+      <Name>Bochky.FindDirectory</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

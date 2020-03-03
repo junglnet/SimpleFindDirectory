@@ -1,26 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-namespace Bochky.FindOrderFolder.Common.Entities
+namespace Bochky.FindDirectory.Common.Entities
 {
     public class SearchResult
     {
-
-        public SearchResult(
-            IReadOnlyList<Folder> findDirectories, 
-            FindRequest findRequest, 
-            bool haveResult)
-        {
-
-            FindDirectories = findDirectories;
-
-            FindRequest = findRequest;
-
-            HaveResult = haveResult;
-        }
-
-
-        public IReadOnlyList<Folder> FindDirectories { get; }        
-        public FindRequest FindRequest { get; }       
-        public bool HaveResult { get; }
+               
+            
+        public IEnumerable<Folder> FindDirectories { get; set; }
+    
+        public FindRequest FindRequest { get; set; }
+    
+        public bool HaveResult { get; set; }
     }
 }

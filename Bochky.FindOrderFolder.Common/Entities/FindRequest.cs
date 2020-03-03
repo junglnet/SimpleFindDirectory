@@ -1,13 +1,12 @@
-﻿
-namespace Bochky.FindOrderFolder.Common.Entities
+﻿using System.Runtime.Serialization;
+
+namespace Bochky.FindDirectory.Common.Entities
 {
+    
     public class FindRequest
     {
-                
-        public FindRequest(string request) =>            
-            Request = request.ToLower();
-
-        public string Request { get; }
+       
+        public string Request { get; set; }
     
     }
 }

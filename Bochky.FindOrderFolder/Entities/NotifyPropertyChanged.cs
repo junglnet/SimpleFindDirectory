@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Bochky.FindOrderFolder.Entities
+namespace Bochky.FindDirectory.Entities
 {
     public abstract class NotifyPropertyChanged : INotifyPropertyChanged
     {

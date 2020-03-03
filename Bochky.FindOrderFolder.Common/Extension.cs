@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bochky.FindOrderFolder.Common.Entities
+namespace Bochky.FindDirectory.Common
 {
     public static class Extension
     {

@@ -1,4 +1,5 @@
-﻿using Bochky.FindOrderFolder.Common.Entities;
+﻿using Bochky.FindDirectory.Common.Entities;
+using Bochky.FindDirectory.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Bochky.FindOrderFolder.Logic
+namespace Bochky.FindDirectory.Logic
 {
        
     /// <summary>

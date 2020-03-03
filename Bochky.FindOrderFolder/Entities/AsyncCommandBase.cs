@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Bochky.FindOrderFolder.Interfaces;
+using Bochky.FindDirectory.Interfaces;
 
-namespace Bochky.FindOrderFolder.Entities
+namespace Bochky.FindDirectory.Entities
 {
     public abstract class AsyncCommandBase : IAsyncCommand
     {

@@ -1,11 +1,11 @@
-﻿using Bochky.FindOrderFolder.Common.Entities;
+﻿using Bochky.FindDirectory.Common.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bochky.FindOrderFolder.Logic
+namespace Bochky.FindDirectory.Service.Core
 {
     /// <summary>
     /// Класс реализует логику загрузки файла с настройками
@@ -32,7 +32,7 @@ namespace Bochky.FindOrderFolder.Logic
                 {
 
                     if ( Directory.Exists(line) )                                        
-                        directories.Add(new Folder(line));
+                        directories.Add(new Folder { DirectoryName = line.ToLower() });
                 }
             }
 

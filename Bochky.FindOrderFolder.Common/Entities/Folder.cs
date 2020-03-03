@@ -1,17 +1,12 @@
-﻿
-namespace Bochky.FindOrderFolder.Common.Entities
+﻿using System.Runtime.Serialization;
+
+namespace Bochky.FindDirectory.Common.Entities
 {
+    
     public class Folder
     {
-
-        public Folder (string directoryName)
-        {
-            
-            DirectoryName = directoryName.ToLower();
-
-        }
-
-        public string DirectoryName { get; }
+         
+        public string DirectoryName { get; set; }
         
     }
 }

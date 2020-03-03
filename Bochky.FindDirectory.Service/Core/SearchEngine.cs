@@ -1,6 +1,6 @@
-﻿using Bochky.FindOrderFolder.Common.Entities;
-using Bochky.FindOrderFolder.Common.Exceptions;
-using Bochky.FindOrderFolder.Common.Interfaces;
+﻿using Bochky.FindDirectory.Common.Entities;
+using Bochky.FindDirectory.Common.Exceptions;
+using Bochky.FindDirectory.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,28 +8,20 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bochky.FindOrderFolder.Logic
+namespace Bochky.FindDirectory.Service.Core
 {
     /// <summary>
     /// Класс реализует логику поиска 
     /// </summary>
-    public class SearchEngine : IFindService
+    public class SearchEngine
     {
-
-        private readonly IReadOnlyList<Folder> _foldersToFinding;
-                
-        public SearchEngine(IReadOnlyList<Folder> foldersToFinding)
-        {
-            
-            _foldersToFinding = foldersToFinding;
-                       
-        }
-
+             
         /// <summary>
         /// Выполение поиска
         /// </summary>        
         public async Task<SearchResult> FindAsync(
-            FindRequest findRequest, 
+            FindRequest findRequest,
+            IReadOnlyList<Folder> foldersToFinding,
             bool isDeepSearch,
             CancellationToken token = default)
         {
@@ -45,11 +37,18 @@ namespace Bochky.FindOrderFolder.Logic
 
             var findResult = isDeepSearch ? 
                     await Task.Run(
-                        () => DeepFindFolderName(findRequest, _foldersToFinding, token)) :
+                        () => DeepFindFolderName(findRequest, foldersToFinding, token)) :
                     await Task.Run(
-                        () => FindFolderNameOnKnowLevel(findRequest, _foldersToFinding, token));            
+                        () => FindFolderNameOnKnowLevel(findRequest, foldersToFinding, token));
 
-            return new SearchResult(findResult, findRequest, findResult.Count > 0 ? true : false);
+            return new SearchResult()
+            {
+                FindDirectories = findResult.ToArray(),
+                FindRequest = findRequest,
+                HaveResult = findResult.Count > 0 ? true : false
+            };
+
+            //return new SearchResult(findResult, findRequest, findResult.Count > 0 ? true : false);
         }
 
         private IReadOnlyList<Folder> FindFolderName(
@@ -98,7 +97,7 @@ namespace Bochky.FindOrderFolder.Logic
 
             return searchResult.Where(
                 f => f.Contains(findRequest.Request))
-                    ?.Select(item => new Folder(item))
+                    ?.Select(item => new Folder() { DirectoryName = item.ToLower() })
                     ?.ToList();
         }
 
@@ -138,7 +137,7 @@ namespace Bochky.FindOrderFolder.Logic
                 return FindFolderNameOnKnowLevel(findRequest,
                         searchFolder
                             .Where(item => item != null)
-                            .Select(item => new Folder(item))
+                            .Select(item => new Folder() { DirectoryName = item.ToLower() })
                             ?.ToList(),
                         token,
                         currentLevel,
@@ -187,7 +186,7 @@ namespace Bochky.FindOrderFolder.Logic
                 findRequest, 
                 foldersToFinding
                     .Where(item => item != null)
-                    .Select(item => new Folder(item))
+                    .Select(item => new Folder() { DirectoryName = item.ToLower() })
                     ?.ToList(), token);
 
             searchResult = searchResult.Concat(lastSearchResult).ToArray();
@@ -213,7 +212,7 @@ namespace Bochky.FindOrderFolder.Logic
                         findRequest,
                         searchFolder
                             .Where(item => item != null)
-                            .Select(item => new Folder(item))
+                            .Select(item => new Folder() { DirectoryName = item.ToLower() })
                             ?.ToList(),
                         token,
                         currentLevel,

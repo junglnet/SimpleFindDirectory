@@ -3,12 +3,13 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Bochky.FindOrderFolder.Common.Entities;
-using Bochky.FindOrderFolder.Common.Interfaces;
-using Bochky.FindOrderFolder.Entities;
-using Bochky.FindOrderFolder.Logic;
+using Bochky.FindDirectory.Common.Entities;
+using Bochky.FindDirectory.Common.Interfaces;
+using Bochky.FindDirectory.Entities;
+using Bochky.FindDirectory.Logic;
+using Bochky.FindDirectory.Implementation;
 
-namespace Bochky.FindOrderFolder
+namespace Bochky.FindDirectory
 {
     public class MainViewModel : NotifyPropertyChanged
     {
@@ -65,26 +66,24 @@ namespace Bochky.FindOrderFolder
 
             Folders.Clear();
 
-            IFindService findEngle = new SearchEngine(
-                await LoadFindFolderService.LoadDirectoriesAsync(
-                    Environment.CurrentDirectory + "\\" + "FindFolder.cfg"));
+            IFindService findService = new FindServiceClient();
 
             var searchResult
-                = await findEngle.FindAsync(
-                    new FindRequest(Request ?? ""), IsDeepSearch, token);
+                = await findService.FindAsync(
+                    new FindRequest() { Request = Request.ToLower() ?? "",  }, IsDeepSearch);
 
-            
+
             if (searchResult.HaveResult)
             {
                 Message = "Найдено совпадение.";
 
-                foreach(var item in searchResult.FindDirectories)
+                foreach (var item in searchResult.FindDirectories)
                 {
                     Folders.Add(item);
                 }
 
             }
-                
+
 
             else
                 Message = "Ничего не найдено. Попробуйте углубленный поиск.";
