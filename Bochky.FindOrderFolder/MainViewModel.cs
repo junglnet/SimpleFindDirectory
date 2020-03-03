@@ -70,7 +70,7 @@ namespace Bochky.FindDirectory
             Folders.Clear();
 
             var searchResult = await _findService.FindAsync(
-                     new FindRequest(Request ?? ""), IsDeepSearch, token);
+                     new FindRequest(Request), IsDeepSearch, token);
 
             if (searchResult.HaveResult)
             {
@@ -83,19 +83,12 @@ namespace Bochky.FindDirectory
 
             }
 
-
             else
                 Message = "Ничего не найдено. Попробуйте углубленный поиск.";
         }
 
-        private async Task OpenItem(Folder folder, CancellationToken token)
-        {
-            
-            if (folder == null) return;
-
-            await DirectoryOpenerService.OpenDirectory(folder, token);            
-
-        }
+        private async Task OpenItem(Folder folder, CancellationToken token) 
+            => await DirectoryOpenerService.OpenDirectory(folder, token);            
 
         public ObservableCollection<Folder> Folders { get; set; }
 

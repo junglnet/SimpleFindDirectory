@@ -8,7 +8,7 @@ namespace Bochky.FindDirectory.Common.Entities
         
         public Folder(string directoryName)
         {
-            DirectoryName = directoryName;
+            DirectoryName = directoryName.ToLower();
         }
 
         [DataMember]

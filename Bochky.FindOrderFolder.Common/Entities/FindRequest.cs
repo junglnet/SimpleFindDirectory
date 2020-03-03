@@ -8,7 +8,7 @@ namespace Bochky.FindDirectory.Common.Entities
 
         public FindRequest(string request)
         {
-            Request = request;
+            Request = request.ToLower();
         }
         
         [DataMember]
