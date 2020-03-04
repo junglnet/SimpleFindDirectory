@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Bochky.FindDirectory.Common.Entities;
 
-namespace Bochky.FindDirectory.Interfaces
+namespace Bochky.FindDirectory.Common.Interfaces
 {
-    interface IFindService
+    public interface IFindService
     {
         Task<SearchResult> FindAsync(
             FindRequest findRequest,

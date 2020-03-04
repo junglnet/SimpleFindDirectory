@@ -49,6 +49,7 @@
     <Compile Include="Entities\Folder.cs" />
     <Compile Include="Entities\SearchResult.cs" />
     <Compile Include="Exceptions\MinLengthRequestException.cs" />
+    <Compile Include="Interfaces\IFindService.cs" />
     <Compile Include="Interfaces\IFindServiceContract.cs" />
     <Compile Include="Interfaces\ILoadFindFOlderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

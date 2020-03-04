@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Bochky.FindDirectory.Common.Entities;
+using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Entities;
 using Bochky.FindDirectory.Implementation;
 using Bochky.FindDirectory.Interfaces;
