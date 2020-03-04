@@ -8,6 +8,7 @@ using Bochky.FindDirectory.Entities;
 using Bochky.FindDirectory.Implementation;
 using Bochky.FindDirectory.Interfaces;
 using Bochky.FindDirectory.Services;
+using Bochky.Utils.Logger;
 
 namespace Bochky.FindDirectory
 {
@@ -18,6 +19,7 @@ namespace Bochky.FindDirectory
         private bool isDeepSearch;
         private Folder currentFolder;
         private readonly IFindService _findService;
+        private ILogger Logger;
 
         public MainViewModel()
         {
@@ -25,6 +27,8 @@ namespace Bochky.FindDirectory
             _findService = new FindService(new FindServiceClient());
 
             IsDeepSearch = false;
+
+            Logger = new NLogLogger("FindClient");
 
             Folders = new ObservableCollection<Folder>();
 
@@ -41,6 +45,7 @@ namespace Bochky.FindDirectory
 
                     Message = ex.Message;
 
+                    Logger.LogError(ex);
                 }
 
             });
@@ -58,6 +63,8 @@ namespace Bochky.FindDirectory
                 {
 
                     Message = ex.Message;
+
+                    Logger.LogError(ex);
                 }
 
             });

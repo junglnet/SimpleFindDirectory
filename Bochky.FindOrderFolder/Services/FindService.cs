@@ -21,10 +21,7 @@ namespace Bochky.FindDirectory.Services
         
 
         public Task<SearchResult> FindAsync(FindRequest findRequest, bool isDeepSearch, CancellationToken token) 
-            => _findServiceContract.FindAsync(findRequest, isDeepSearch).WithCancellation(token).WithTimeout(TimeSpan.FromSeconds(5));
+            => _findServiceContract.FindAsync(findRequest, isDeepSearch).WithCancellation(token).WithTimeout(TimeSpan.FromSeconds(15));
         
-            
-
-
     }
 }
