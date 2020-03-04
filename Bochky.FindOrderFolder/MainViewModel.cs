@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +8,6 @@ using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Entities;
 using Bochky.FindDirectory.Implementation;
-using Bochky.FindDirectory.Interfaces;
 using Bochky.FindDirectory.Services;
 using Bochky.Utils.Logger;
 
@@ -20,18 +20,41 @@ namespace Bochky.FindDirectory
         private bool isDeepSearch;
         private Folder currentFolder;
         private readonly IFindService _findService;
-        private ILogger Logger;
+        private IEnumerable<Folder> _searchPoints; 
+        private ILogger logger;
 
         public MainViewModel()
         {
             // defaults
             _findService = new FindService(new FindServiceClient());
 
+            
+
             IsDeepSearch = false;
 
-            Logger = new NLogLogger("FindClient");
+            logger = new NLogLogger("FindClient");
 
             Folders = new ObservableCollection<Folder>();
+
+            LoadCommand = AsyncCommand.Create(async(token) => {
+
+                try
+                {
+
+                    _searchPoints = await _findService.LoadDirectoriesAsync(token);
+
+                }
+                catch (Exception ex)
+                {
+
+                    Message = ex.Message;
+
+                    logger.LogError(ex);
+                }
+            
+            
+            
+            });
 
             FindCommand = AsyncCommand.Create(async (token) => {
 
@@ -46,7 +69,7 @@ namespace Bochky.FindDirectory
 
                     Message = ex.Message;
 
-                    Logger.LogError(ex);
+                    logger.LogError(ex);
                 }
 
             });
@@ -65,7 +88,7 @@ namespace Bochky.FindDirectory
 
                     Message = ex.Message;
 
-                    Logger.LogError(ex);
+                    logger.LogError(ex);
                 }
 
             });
@@ -78,7 +101,7 @@ namespace Bochky.FindDirectory
             Folders.Clear();
 
             var searchResult = await _findService.FindAsync(
-                     new FindRequest(Request), IsDeepSearch, token);
+                     new FindRequest(Request), _searchPoints, IsDeepSearch, token);
 
             if (searchResult.HaveResult)
             {
@@ -154,7 +177,7 @@ namespace Bochky.FindDirectory
 
         }
 
-
+        public ICommand LoadCommand { get; }
         public ICommand FindCommand { get; }
         
         public ICommand OpenItemCommand { get; }

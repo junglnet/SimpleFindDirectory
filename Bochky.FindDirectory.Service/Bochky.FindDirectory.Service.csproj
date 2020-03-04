@@ -82,6 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\LoadFindFolderFromXMLService.cs" />
     <Compile Include="Core\LoadFindFolderService.cs" />
     <Compile Include="Core\SearchEngine.cs" />
     <Compile Include="ErrorHandler.cs" />
@@ -94,6 +95,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Bochky.FindDirectory.Service_TemporaryKey.pfx" />
+    <None Include="FindFolder.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

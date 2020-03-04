@@ -1,5 +1,6 @@
 ﻿using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Exceptions;
+using Bochky.FindDirectory.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ namespace Bochky.FindDirectory.Service.Core
     /// <summary>
     /// Класс реализует логику поиска 
     /// </summary>
-    public class SearchEngine
+    public class SearchEngine : ISearchEngine
     {
              
         /// <summary>
@@ -72,7 +73,7 @@ namespace Bochky.FindDirectory.Service.Core
 
             //});
 
-            foreach(var item in searchFolderList.Select(item => item.DirectoryName))
+            foreach(var item in searchFolderList.Select(item => item.DirectoryPath))
             {
                 if (token.IsCancellationRequested) break;
 
@@ -109,7 +110,7 @@ namespace Bochky.FindDirectory.Service.Core
                         
             string[] searchFolder = new string[0];
 
-            var foldersToFinding = searchFolderList.Select(item => item.DirectoryName).ToArray();
+            var foldersToFinding = searchFolderList.Select(item => item.DirectoryPath).ToArray();
 
             searchResult = FindFolderName(findRequest, searchFolderList, token).ToList();
 
@@ -160,14 +161,14 @@ namespace Bochky.FindDirectory.Service.Core
 
             lastSearchResult = lastSearchResult ?? new List<Folder>();
 
-            var foldersToFinding = searchFolderList.Select(item => item.DirectoryName).ToArray();
+            var foldersToFinding = searchFolderList.Select(item => item.DirectoryPath).ToArray();
 
             // исключаем из поиска ранее найденые результаты
             List<string> searchFolderToEscape = new List<string>();
 
             foreach (var sf in foldersToFinding)
             {
-                foreach (var lsr in lastSearchResult.Select(item => item.DirectoryName).ToArray())
+                foreach (var lsr in lastSearchResult.Select(item => item.DirectoryPath).ToArray())
                 {
                     if (sf.Contains(lsr)) searchFolderToEscape.Add(sf);
                 }

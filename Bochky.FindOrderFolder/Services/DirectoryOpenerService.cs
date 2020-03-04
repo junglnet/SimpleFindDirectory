@@ -23,7 +23,7 @@ namespace Bochky.FindDirectory.Services
                 throw new ArgumentNullException(nameof(folder));
            
             await Task.Run(() => Process.Start(
-                            "explorer", folder.DirectoryName.ToPath()));
+                            "explorer", folder.DirectoryPath.ToPath()));
                         
 
         }

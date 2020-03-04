@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Bochky.FindDirectory.Common.Interfaces
 {
-    public interface ILoadFindFOlderService
+    public interface ILoadFindFolderService
     {
         Task<IEnumerable<Folder>> LoadDirectoriesAsync(string path);
     }

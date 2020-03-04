@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ServiceModel;
 using Bochky.Utils.Logger;
+using Bochky.FindDirectory.Service.Implementation;
+
 
 namespace Bochky.FindDirectory.Service
 {
@@ -13,15 +11,16 @@ namespace Bochky.FindDirectory.Service
         private ServiceHost _host;
 
         private static ILogger logger;
+
         public void Start()
         {
 
-            logger = new NLogLogger("FindDirectory");
+            logger = new NLogLogger("FindDirectory");            
 
             try
             {
 
-                _host = new ServiceHost(typeof(Implementation.FindService));
+                _host = new ServiceHost(typeof(FindService));
 
                 _host.Description.Behaviors.Add(new ErrorHandlerExtension(logger));
 

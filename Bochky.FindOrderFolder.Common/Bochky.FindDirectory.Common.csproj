@@ -51,7 +51,8 @@
     <Compile Include="Exceptions\MinLengthRequestException.cs" />
     <Compile Include="Interfaces\IFindService.cs" />
     <Compile Include="Interfaces\IFindServiceContract.cs" />
-    <Compile Include="Interfaces\ILoadFindFOlderService.cs" />
+    <Compile Include="Interfaces\ILoadFindFolderService.cs" />
+    <Compile Include="Interfaces\ISearchEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

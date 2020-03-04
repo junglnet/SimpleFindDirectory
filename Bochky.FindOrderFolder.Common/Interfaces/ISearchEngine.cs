@@ -1,20 +1,16 @@
 ﻿using Bochky.FindDirectory.Common.Entities;
-using System.Threading.Tasks;
-using System.ServiceModel;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bochky.FindDirectory.Common.Interfaces
 {
-    [ServiceContract]
-    public interface IFindServiceContract
+    public interface ISearchEngine
     {
-        [OperationContract]
         Task<SearchResult> FindAsync(
             FindRequest findRequest,
             IEnumerable<Folder> foldersToFinding,
-            bool isDeepSearch);
-
-        [OperationContract]
-        Task<IEnumerable<Folder>> LoadDirectoriesAsync();
+            bool isDeepSearch,
+            CancellationToken token = default);
     }
 }

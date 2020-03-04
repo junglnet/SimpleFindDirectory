@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bochky.FindDirectory.Common.Entities;
+using System;
 
 namespace Bochky.FindDirectory.Common
 {
@@ -12,5 +9,9 @@ namespace Bochky.FindDirectory.Common
         public static string ToPath(this String item) =>
             "\"" + item + "\"";
 
+        
+
     }
+
+    
 }

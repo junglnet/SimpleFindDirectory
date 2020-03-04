@@ -11,7 +11,7 @@ namespace Bochky.FindDirectory.Service.Core
     /// <summary>
     /// Класс реализует логику загрузки файла с настройками
     /// </summary>
-    public class LoadFindFolderService : ILoadFindFOlderService
+    public class LoadFindFolderService : ILoadFindFolderService
     {
        
         public async Task<IEnumerable<Folder>> LoadDirectoriesAsync(string path)

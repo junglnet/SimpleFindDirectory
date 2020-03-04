@@ -80,7 +80,7 @@
                                     <DataTemplate>
                                         <TextBlock 
                                             MaxWidth="320"
-                                            Text="{Binding Path=DirectoryName}" 
+                                            Text="{Binding Path=DirectoryPath}" 
                                             TextWrapping="Wrap" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -118,4 +118,11 @@
         </Grid>
         
     </Grid>
+    <!--Обработка события loaded-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction
+                            Command="{Binding LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 </Window>
