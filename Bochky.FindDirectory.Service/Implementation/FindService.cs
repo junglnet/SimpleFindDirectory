@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Interfaces;
@@ -13,10 +9,13 @@ namespace Bochky.FindDirectory.Service.Implementation
     public class FindService : IFindServiceContract
     {
         private readonly SearchEngine _searchEngine;
+
+        private readonly ILoadFindFOlderService _loadFindFOlderService;
         public FindService()
         {
             
             _searchEngine = new SearchEngine();
+            _loadFindFOlderService = new LoadFindFolderService();
 
         }
         public async Task<SearchResult> FindAsync(
@@ -26,7 +25,7 @@ namespace Bochky.FindDirectory.Service.Implementation
                         
             try
             {
-                var foldersToFinding = await LoadFindFolderService.LoadDirectoriesAsync(Environment.CurrentDirectory + "\\" + "FindFolder.cfg");
+                var foldersToFinding = await _loadFindFOlderService.LoadDirectoriesAsync(Environment.CurrentDirectory + "\\" + "FindFolder.cfg");
 
                 return await _searchEngine.FindAsync(findRequest, foldersToFinding, isDeepSearch);
             }

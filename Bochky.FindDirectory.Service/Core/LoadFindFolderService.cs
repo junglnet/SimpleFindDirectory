@@ -1,4 +1,5 @@
 ﻿using Bochky.FindDirectory.Common.Entities;
+using Bochky.FindDirectory.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,10 +11,10 @@ namespace Bochky.FindDirectory.Service.Core
     /// <summary>
     /// Класс реализует логику загрузки файла с настройками
     /// </summary>
-    public class LoadFindFolderService
+    public class LoadFindFolderService : ILoadFindFOlderService
     {
        
-        public static async Task<IEnumerable<Folder>> LoadDirectoriesAsync(string path)
+        public async Task<IEnumerable<Folder>> LoadDirectoriesAsync(string path)
         {
             
             if (path == null)
