@@ -13,7 +13,7 @@ namespace Bochky.FindDirectory.Service.Core
     public class LoadFindFolderService
     {
        
-        public static async Task<IReadOnlyList<Folder>> LoadDirectoriesAsync(string path)
+        public static async Task<IEnumerable<Folder>> LoadDirectoriesAsync(string path)
         {
             
             if (path == null)

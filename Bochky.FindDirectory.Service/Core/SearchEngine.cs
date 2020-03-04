@@ -21,7 +21,7 @@ namespace Bochky.FindDirectory.Service.Core
         /// </summary>        
         public async Task<SearchResult> FindAsync(
             FindRequest findRequest,
-            IReadOnlyList<Folder> foldersToFinding,
+            IEnumerable<Folder> foldersToFinding,
             bool isDeepSearch,
             CancellationToken token = default)
         {
@@ -41,13 +41,13 @@ namespace Bochky.FindDirectory.Service.Core
                     await Task.Run(
                         () => FindFolderNameOnKnowLevel(findRequest, foldersToFinding, token));
 
-            return new SearchResult(findRequest, findResult, findResult.Count > 0 ? true : false);            
+            return new SearchResult(findRequest, findResult, findResult.ToList().Count > 0 ? true : false);            
            
         }
 
-        private IReadOnlyList<Folder> FindFolderName(
+        private IEnumerable<Folder> FindFolderName(
             FindRequest findRequest,
-            IReadOnlyList<Folder> searchFolderList,
+            IEnumerable<Folder> searchFolderList,
             CancellationToken token = default)
         {
 
@@ -95,9 +95,9 @@ namespace Bochky.FindDirectory.Service.Core
                     ?.ToList();
         }
 
-        private IReadOnlyList<Folder> FindFolderNameOnKnowLevel(
+        private IEnumerable<Folder> FindFolderNameOnKnowLevel(
             FindRequest findRequest,
-            IReadOnlyList<Folder> searchFolderList,
+            IEnumerable<Folder> searchFolderList,
             CancellationToken token = default,
             int currentLevel = 0,
             int maxLevel = 1)
@@ -112,7 +112,7 @@ namespace Bochky.FindDirectory.Service.Core
 
             var foldersToFinding = searchFolderList.Select(item => item.DirectoryName).ToArray();
 
-            searchResult = FindFolderName(findRequest, searchFolderList, token);
+            searchResult = FindFolderName(findRequest, searchFolderList, token).ToList();
 
             if (searchResult.Count == 0 && currentLevel < maxLevel)
             {
@@ -143,12 +143,12 @@ namespace Bochky.FindDirectory.Service.Core
 
         }
 
-        private IReadOnlyList<Folder> DeepFindFolderName(
+        private IEnumerable<Folder> DeepFindFolderName(
             FindRequest findRequest,
-            IReadOnlyList<Folder> searchFolderList,
+            IEnumerable<Folder> searchFolderList,
             CancellationToken token = default,            
             int currentLevel = 0,
-            IReadOnlyList<Folder> lastSearchResult = null,
+            IEnumerable<Folder> lastSearchResult = null,
             int maxLevel = 2)
         {
 
@@ -181,7 +181,7 @@ namespace Bochky.FindDirectory.Service.Core
                 foldersToFinding
                     .Where(item => item != null)
                     .Select(item => new Folder(item.ToLower()) )
-                    ?.ToList(), token);
+                    ?.ToList(), token).ToList();
 
             searchResult = searchResult.Concat(lastSearchResult).ToArray();
 
