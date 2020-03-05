@@ -57,6 +57,7 @@
     <Compile Include="Interfaces\ILoadFindFolderService.cs" />
     <Compile Include="Interfaces\ISaveChekedFolderListService.cs" />
     <Compile Include="Interfaces\ISearchEngine.cs" />
+    <Compile Include="Interfaces\ISyncSearchFolderConfigurationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

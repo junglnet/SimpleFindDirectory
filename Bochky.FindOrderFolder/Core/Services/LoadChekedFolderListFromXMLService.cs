@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -14,12 +15,20 @@ namespace Bochky.FindDirectory.Core.Services
 
             XmlSerializer formatter = new XmlSerializer(typeof(ChekedFolder[]));
 
-            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            if (File.Exists(filePath))
             {
-              
-                return await Task.Run(() => (ChekedFolder[])formatter.Deserialize(fs));
 
+                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+                {
+
+                    return await Task.Run(() => (ChekedFolder[])formatter.Deserialize(fs));
+
+
+                }
             }
+
+            else
+                return new List<ChekedFolder>();
 
         }
     }

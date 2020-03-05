@@ -10,8 +10,8 @@ namespace Bochky.FindDirectory.Common.Interfaces
         Task<SearchResult> FindAsync(
             FindRequest findRequest,
             IEnumerable<Folder> foldersToFinding,
-            bool isDeepSearch, CancellationToken token);
+            bool isDeepSearch, CancellationToken token = default);
         
-        Task<IEnumerable<Folder>> LoadDirectoriesAsync(CancellationToken token);
+        Task<IEnumerable<Folder>> LoadDirectoriesAsync(CancellationToken token = default);
     }
 }

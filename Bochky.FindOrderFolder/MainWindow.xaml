@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Bochky.FindDirectory"
         mc:Ignorable="d"        
         WindowStartupLocation="CenterScreen"       
-        Title="Bochky. Поиск заказа клиента" Height="450" Width="400" ResizeMode="CanMinimize" ShowInTaskbar="True" >
+        Title="Bochky. Поиск заказа клиента" Height="450" Width="580" ResizeMode="CanMinimize" ShowInTaskbar="True" >
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
@@ -24,7 +24,8 @@
         </Style>
         <Style x:Key="SimpleLabel" TargetType="Label">
             <Setter Property="FontFamily" Value="Verdana" />
-            <Setter Property="MinHeight" Value="30" />            
+            <Setter Property="MinHeight" Value="30" />
+            <Setter Property="FontWeight" Value="Black" />
         </Style>
         <Style x:Key="ErrorTextBlock" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Verdana" />
@@ -43,35 +44,33 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="270" />
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Margin=" 10">
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10 0 10 10">
             <Grid.RowDefinitions>              
                 <RowDefinition Height="*" />
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
                 
-                <Label Content="Поисковый запрос (ВВ55555 или 55555 или Иванов): " 
+                <Label Content="Поисковый запрос: " 
                        Style="{StaticResource SimpleLabel}"/>
                 
                 <TextBox Style="{StaticResource SimpleTextBox}"  
                          Text="{Binding Request, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Углубленный поиск " 
-                           Style="{StaticResource SimpleLabel}"/>
-                    <CheckBox 
-                        Style="{StaticResource CheckedStyle}"
-                        IsChecked="{Binding IsDeepSearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                </StackPanel>
 
                 <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding Message}"/>
-                
+
                 <ListView 
                     Name="FoldersListView"
                     SelectedItem="{Binding CurrentFolder}"
                     ItemsSource="{Binding Folders}"
-                    VirtualizingPanel.IsVirtualizing="False"                    
-                    MaxHeight="150">
+                    VirtualizingPanel.IsVirtualizing="False"
+                    VerticalAlignment="Top"
+                    Height="240">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn 
@@ -79,7 +78,7 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock 
-                                            MaxWidth="320"
+                                            MaxWidth="265"
                                             Text="{Binding Path=DirectoryPath}" 
                                             TextWrapping="Wrap" />
                                     </DataTemplate>
@@ -97,9 +96,11 @@
                     </i:Interaction.Triggers>
                 </ListView>
 
+
+
             </StackPanel>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="33*"/>
                     <ColumnDefinition Width="*"/>
@@ -116,7 +117,64 @@
             </Grid>
 
         </Grid>
-        
+        <Grid Grid.Row="1" Grid.Column="1">
+            <StackPanel>
+                <Label Content="Опции поиска:"                        
+                       Style="{StaticResource SimpleLabel}"/>
+                <StackPanel Orientation="Horizontal">                    
+                    <CheckBox 
+                        Style="{StaticResource CheckedStyle}"
+                        IsChecked="{Binding IsDeepSearch, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Label Content="Углубленный поиск " />
+                </StackPanel>
+
+                <Label Content="Где искать:" 
+                           Style="{StaticResource SimpleLabel}"/>
+
+                <ItemsControl
+                          ItemsSource="{Binding SearchPoint}"
+                          Height="300"
+                          ScrollViewer.CanContentScroll="True"  
+                          Grid.IsSharedSizeScope="True">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                x:Name="Border"
+                                Padding="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                                 SharedSizeGroup="Checkerz" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox
+                                            VerticalAlignment="Center"
+                                            IsChecked="{Binding IsCheked}" />
+                                    <StackPanel
+                                            Margin="8 0 0 0"
+                                            Grid.Column="1">
+                                        <TextBlock
+                                                  FontWeight="Normal"
+                                                  Text="{Binding Folder.Name}" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger
+                                          Binding="{Binding IsSelected}"
+                                          Value="True">
+
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+            </StackPanel>
+            
+            
+        </Grid>
     </Grid>
     <!--Обработка события loaded-->
     <i:Interaction.Triggers>

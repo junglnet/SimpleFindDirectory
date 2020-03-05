@@ -25,7 +25,7 @@ namespace Bochky.FindDirectory.Core.Services
             FindRequest findRequest, 
             IEnumerable<Folder> foldersToFinding, 
             bool isDeepSearch, 
-            CancellationToken token) 
+            CancellationToken token = default) 
             => await _findServiceContract.FindAsync(
                 findRequest, 
                 foldersToFinding, 
@@ -33,7 +33,7 @@ namespace Bochky.FindDirectory.Core.Services
                 .WithCancellation(token)
                 .WithTimeout(TimeSpan.FromSeconds(15));
 
-        public async Task<IEnumerable<Folder>> LoadDirectoriesAsync(CancellationToken token)
+        public async Task<IEnumerable<Folder>> LoadDirectoriesAsync(CancellationToken token = default)
             => await _findServiceContract.LoadDirectoriesAsync()
                 .WithCancellation(token)
                 .WithTimeout(TimeSpan.FromSeconds(15));

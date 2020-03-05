@@ -140,6 +140,7 @@
     <Compile Include="Core\Services\FolderTypeConversionService.cs" />
     <Compile Include="Core\Services\LoadChekedFolderListFromXMLService.cs" />
     <Compile Include="Core\Services\SaveChekedFolderListToXMLService.cs" />
+    <Compile Include="Core\Services\SyncSearchFolderConfigurationService.cs" />
     <Compile Include="Entities\AsyncCommand.cs" />
     <Compile Include="Entities\AsyncCommandBase.cs" />
     <Compile Include="Entities\NotifyPropertyChanged.cs" />

@@ -23,6 +23,7 @@ namespace Bochky.FindDirectory
         private IEnumerable<Folder> _searchPoints; 
         private ILogger logger;
 
+
         public MainViewModel()
         {
             // defaults
@@ -43,7 +44,20 @@ namespace Bochky.FindDirectory
                 try
                 {
 
-                    _searchPoints = await _findService.LoadDirectoriesAsync(token);
+                    ISyncSearchFolderConfigurationService syncSearchFolderConfigurationService
+                    = new SyncSearchFolderConfigurationService(
+                        new LoadChekedFolderListFromXMLService(),
+                        new FolderTypeConversionService(),
+                        _findService,
+                        "localconfig.xml"
+                        );
+
+                    var result = await syncSearchFolderConfigurationService.Pull();
+
+                    foreach (var item in result)
+                    {
+                        SearchPoint.Add(item);
+                    }
 
 
 
@@ -104,8 +118,16 @@ namespace Bochky.FindDirectory
 
             Folders.Clear();
 
+            var t = new FolderTypeConversionService();
+
+            _searchPoints = t.ConvertToFolder(SearchPoint);
+
             var searchResult = await _findService.FindAsync(
                      new FindRequest(Request), _searchPoints, IsDeepSearch, token);
+
+            var tg = new SaveChekedFolderListToXMLService();
+
+            await tg.SaveChekedFolderList(SearchPoint, "localconfig.xml");
 
             if (searchResult.HaveResult)
             {
