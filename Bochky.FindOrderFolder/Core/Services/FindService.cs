@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.Threading;
 using System;
 using System.Collections.Generic;
 
-namespace Bochky.FindDirectory.Services
+namespace Bochky.FindDirectory.Core.Services
 {
     class FindService : IFindService
     {

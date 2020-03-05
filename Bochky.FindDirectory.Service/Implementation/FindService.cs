@@ -17,7 +17,7 @@ namespace Bochky.FindDirectory.Service.Implementation
            
             _searchEngine = new SearchEngine();
 
-            _loadFindFolderService = new LoadFindFolderService();
+            _loadFindFolderService = new LoadFindFolderFromXMLService();
 
         }
         public async Task<SearchResult> FindAsync(
@@ -44,9 +44,11 @@ namespace Bochky.FindDirectory.Service.Implementation
         {
             try
             {
-                
-                return await _loadFindFolderService.LoadDirectoriesAsync(
-                    Environment.CurrentDirectory + "\\" + "FindFolder.cfg");
+
+                //return await _loadFindFolderService.LoadDirectoriesAsync(
+                //    Environment.CurrentDirectory + "\\" + "FindFolder.cfg");
+
+                return await _loadFindFolderService.LoadDirectoriesAsync("FindPoint.xml");
 
             }
             catch (Exception ex)

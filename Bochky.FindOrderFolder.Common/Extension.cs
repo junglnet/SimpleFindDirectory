@@ -6,7 +6,7 @@ namespace Bochky.FindDirectory.Common
     public static class Extension
     {
 
-        public static string ToPath(this String item) =>
+        public static string ToPath(this string item) =>
             "\"" + item + "\"";
 
         

@@ -8,7 +8,7 @@ using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Entities;
 using Bochky.FindDirectory.Implementation;
-using Bochky.FindDirectory.Services;
+using Bochky.FindDirectory.Core.Services;
 using Bochky.Utils.Logger;
 
 namespace Bochky.FindDirectory
@@ -36,12 +36,16 @@ namespace Bochky.FindDirectory
 
             Folders = new ObservableCollection<Folder>();
 
+            SearchPoint = new ObservableCollection<ChekedFolder>();
+
             LoadCommand = AsyncCommand.Create(async(token) => {
 
                 try
                 {
 
                     _searchPoints = await _findService.LoadDirectoriesAsync(token);
+
+
 
                 }
                 catch (Exception ex)
@@ -122,6 +126,8 @@ namespace Bochky.FindDirectory
             => await DirectoryOpenerService.OpenDirectory(folder, token);            
 
         public ObservableCollection<Folder> Folders { get; set; }
+
+        public ObservableCollection<ChekedFolder> SearchPoint { get; set; }
 
         public Folder CurrentFolder
         {

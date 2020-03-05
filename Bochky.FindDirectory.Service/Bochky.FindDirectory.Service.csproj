@@ -83,7 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\LoadFindFolderFromXMLService.cs" />
-    <Compile Include="Core\LoadFindFolderService.cs" />
     <Compile Include="Core\SearchEngine.cs" />
     <Compile Include="ErrorHandler.cs" />
     <Compile Include="ErrorHandlerExtension.cs" />
@@ -95,9 +94,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Bochky.FindDirectory.Service_TemporaryKey.pfx" />
-    <None Include="FindFolder.cfg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -120,6 +116,11 @@
       <Project>{f634a6fd-ad28-4471-a14b-a4ac629cc0f5}</Project>
       <Name>Bochky.FindDirectory.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FindPoint.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ArrayOfFolder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Folder>
+    <DirectoryPath>\\fileserver\bochky\1. клиенты\1. заказчики</DirectoryPath>
+    <Name>Клиенты. Заказчики</Name>
+  </Folder>
+  <Folder>
+    <DirectoryPath>\\fileserver\bochky\1. клиенты\2. потенциальные клиенты</DirectoryPath>
+    <Name>Потенциальные клиенты</Name>
+  </Folder>
+  <Folder>
+    <DirectoryPath>\\fileserver\bochky\1. клиенты\2. потенциальные клиенты\_заведенные</DirectoryPath>
+    <Name>Потенциальные Клиенты. Заведенные</Name>
+  </Folder>
+  <Folder>
+    <DirectoryPath>\\fileserver\bochky\1. клиенты\2. потенциальные клиенты\_на заведение</DirectoryPath>
+    <Name>Потенциальные Клиенты. На заведение</Name>
+  </Folder>
+  <Folder>
+    <DirectoryPath>\\fileserver\bochky\1. клиенты\0. архив\потециальные</DirectoryPath>
+    <Name>Архив. Потециальные</Name>
+  </Folder>
+  <Folder>
+    <DirectoryPath>\\fileserver\bochky\1. клиенты\0. архив\заказчики</DirectoryPath>
+    <Name>Архив. Заказчики</Name>
+  </Folder>
+</ArrayOfFolder>

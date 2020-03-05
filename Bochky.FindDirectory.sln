@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Service", "Bochky.FindDirectory.Service\Bochky.FindDirectory.Service.csproj", "{590955F3-79F9-483C-9499-77C3E4E704EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryClientTest", "Bochky.FindDirectoryClientTest\Bochky.FindDirectoryClientTest.csproj", "{2A9569C0-216B-489D-960B-B0B34CA2B864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryServerTest", "Bochky.FindDirectoryServer\Bochky.FindDirectoryServerTest.csproj", "{C4708A04-CCC6-46F7-8E06-96FDD876D106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{590955F3-79F9-483C-9499-77C3E4E704EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{590955F3-79F9-483C-9499-77C3E4E704EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{590955F3-79F9-483C-9499-77C3E4E704EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9569C0-216B-489D-960B-B0B34CA2B864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9569C0-216B-489D-960B-B0B34CA2B864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9569C0-216B-489D-960B-B0B34CA2B864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9569C0-216B-489D-960B-B0B34CA2B864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

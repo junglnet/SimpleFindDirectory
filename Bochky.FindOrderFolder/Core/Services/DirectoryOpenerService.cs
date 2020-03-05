@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Bochky.FindDirectory.Services
+namespace Bochky.FindDirectory.Core.Services
 {
        
     /// <summary>
