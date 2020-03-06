@@ -26,9 +26,9 @@ namespace Bochky.FindDirectoryClientTest
 
             ILoadChekedFolderListService loadChekedFolderListService = new LoadChekedFolderListFromXMLService();
             
-            ISaveChekedFolderListService saveChekedFolderListService = new SaveChekedFolderListToXMLService();
+            ISaveChekedFolderListService saveChekedFolderListService = new SaveChekedFolderListToXMLService("test.xml");
 
-            await saveChekedFolderListService.SaveChekedFolderList(clientList, "test.xml");
+            await saveChekedFolderListService.SaveChekedFolderList(clientList);
 
             var loadedChekedFolder = await loadChekedFolderListService.LoadChekedFolderList("test.xml");
 

@@ -18,11 +18,14 @@ namespace Bochky.FindDirectory
             var findServiceContract = new FindServiceClient();            
             FindServiceContract = findServiceContract;
 
-            var findService = new FindService(findServiceContract);
-            FindService = findService;
-
             var folderTypeConversionService = new FolderTypeConversionService();
             FolderTypeConversionService = folderTypeConversionService;
+
+            var findService = new FindService(
+                FindServiceContract, 
+                FolderTypeConversionService);
+            FindService = findService;
+           
 
             var loadChekedFolderListService = new LoadChekedFolderListFromXMLService();
             LoadChekedFolderListService = loadChekedFolderListService;

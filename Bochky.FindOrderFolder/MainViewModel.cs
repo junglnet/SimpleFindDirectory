@@ -110,19 +110,16 @@ namespace Bochky.FindDirectory
 
             Folders.Clear();
 
-            var _searchPoints =
-                _serviceFactoryClient.FolderTypeConversionService.ConvertToFolder(SearchPoint);
-
             var searchResult = 
                 await _serviceFactoryClient.FindService.FindAsync(
-                     Request, 
-                     _searchPoints, 
+                     Request,
+                     SearchPoint, 
                      IsDeepSearch, token);
                       
 
             await _serviceFactoryClient
                 .SaveChekedFolderListService
-                .SaveChekedFolderList(SearchPoint, "localconfig.xml");
+                .SaveChekedFolderList(SearchPoint);
 
             if (searchResult.HaveResult)
             {

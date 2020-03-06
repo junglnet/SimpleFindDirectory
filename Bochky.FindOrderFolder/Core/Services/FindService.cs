@@ -15,8 +15,11 @@ namespace Bochky.FindDirectory.Core.Services
     {
 
         private readonly IFindServiceContract _findServiceContract;
+        private readonly IFolderTypeConversionService _folderTypeConversionService;
 
-        public FindService(IFindServiceContract findServiceContract)
+        public FindService(
+            IFindServiceContract findServiceContract,
+            IFolderTypeConversionService folderTypeConversionService)
         {
             _findServiceContract = findServiceContract;
         }
@@ -24,17 +27,17 @@ namespace Bochky.FindDirectory.Core.Services
 
         public async Task<SearchResult> FindAsync(
             string request, 
-            IEnumerable<Folder> foldersToFinding, 
+            IEnumerable<ChekedFolder> foldersToFinding, 
             bool isDeepSearch, 
             CancellationToken token = default)
         {
 
-            if (request == null) throw new NullSearchRequestException();
+            if (request == null) throw new NullSearchRequestException();            
 
             return
                 await _findServiceContract.FindAsync(
                 new FindRequest(request),
-                foldersToFinding,
+                _folderTypeConversionService.ConvertToFolder(foldersToFinding),
                 isDeepSearch)
                 .WithCancellation(token)
                 .WithTimeout(TimeSpan.FromSeconds(15));
