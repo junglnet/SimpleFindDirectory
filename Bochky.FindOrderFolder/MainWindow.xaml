@@ -9,7 +9,7 @@
         xmlns:conv="clr-namespace:Bochky.FindDirectory.Converters"
         mc:Ignorable="d"        
         WindowStartupLocation="CenterScreen"       
-        Title="Bochky. Поиск заказа клиента" Height="450" Width="580" ResizeMode="CanMinimize" ShowInTaskbar="True" >
+        Title="Bochky. Поиск папок" Height="450" Width="580" ResizeMode="CanMinimize" ShowInTaskbar="True" >
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
