@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"             
         xmlns:local="clr-namespace:Bochky.FindDirectory"
+        xmlns:validators="clr-namespace:Bochky.FindDirectory.Validators"
+        xmlns:conv="clr-namespace:Bochky.FindDirectory.Converters"
         mc:Ignorable="d"        
         WindowStartupLocation="CenterScreen"       
         Title="Bochky. Поиск заказа клиента" Height="450" Width="580" ResizeMode="CanMinimize" ShowInTaskbar="True" >
@@ -12,6 +14,9 @@
         <local:MainViewModel/>
     </Window.DataContext>
     <Window.Resources>
+
+        <conv:InverseAndBooleansToBooleanConverter x:Key="InverseAndBooleansToBooleanConverter" />
+
         <Style x:Key="SimpleButton" TargetType="Button">
             <Setter Property="FontFamily" Value="Verdana" />           
             <Setter Property="Margin" Value="5" />
@@ -59,8 +64,18 @@
                 <Label Content="Поисковый запрос: " 
                        Style="{StaticResource SimpleLabel}"/>
 
-                <TextBox Style="{StaticResource SimpleTextBox}"  
-                         Text="{Binding Request, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox x:Name="SerachRequest_TextBox" Style="{StaticResource SimpleTextBox}">
+                    <TextBox.Text>
+                        <Binding Path = "Request" 
+                                            Mode="TwoWay"                                       
+                                            UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+
+                                <validators:SearchRequestValidationRule ValidatesOnTargetUpdated="True"/>
+
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
 
                     <TextBox.InputBindings>
                         <KeyBinding Command="{Binding FindCommand}" Key="Enter"/>
@@ -118,7 +133,17 @@
                 <Button Grid.Column="2" 
                         Content="Найти" 
                         Style="{StaticResource SimpleButton}" 
-                        Command="{Binding FindCommand}"/>
+                        Command="{Binding FindCommand}">
+
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource InverseAndBooleansToBooleanConverter}" 
+                                      Mode="TwoWay">
+                            <Binding ElementName="SerachRequest_TextBox" Path="(Validation.HasError)" />
+                        </MultiBinding>
+                    </Button.IsEnabled>
+
+
+                </Button>
             </Grid>
 
         </Grid>

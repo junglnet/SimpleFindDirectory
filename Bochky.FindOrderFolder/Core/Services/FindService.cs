@@ -7,6 +7,7 @@ using Bochky.FindDirectory.Common.Interfaces;
 using Microsoft.VisualStudio.Threading;
 using System;
 using System.Collections.Generic;
+using Bochky.FindDirectory.Common.Exceptions;
 
 namespace Bochky.FindDirectory.Core.Services
 {
@@ -28,7 +29,7 @@ namespace Bochky.FindDirectory.Core.Services
             CancellationToken token = default)
         {
 
-            if (request == null) throw new Exception("Поисковый запрос пустой.");
+            if (request == null) throw new NullSearchRequestException();
 
             return
                 await _findServiceContract.FindAsync(
