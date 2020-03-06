@@ -27,7 +27,7 @@ namespace Bochky.FindDirectory
             var loadChekedFolderListService = new LoadChekedFolderListFromXMLService();
             LoadChekedFolderListService = loadChekedFolderListService;
 
-            var saveChekedFolderListService = new SaveChekedFolderListToXMLService();
+            var saveChekedFolderListService = new SaveChekedFolderListToXMLService("localconfig.xml");
             SaveChekedFolderListService = saveChekedFolderListService;
 
             var syncSearchFolderConfigurationService 

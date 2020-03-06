@@ -7,7 +7,7 @@ namespace Bochky.FindDirectory.Common.Interfaces
     public interface ISaveChekedFolderListService
     {
 
-        Task SaveChekedFolderList(IEnumerable<ChekedFolder> chekedFolders, string filePath);
+        Task SaveChekedFolderList(IEnumerable<ChekedFolder> chekedFolders);
 
     }
 }
