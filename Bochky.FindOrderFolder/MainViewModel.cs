@@ -7,9 +7,7 @@ using System.Windows.Input;
 using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Entities;
-using Bochky.FindDirectory.Implementation;
 using Bochky.FindDirectory.Core.Services;
-using Bochky.Utils.Logger;
 
 namespace Bochky.FindDirectory
 {
@@ -27,7 +25,7 @@ namespace Bochky.FindDirectory
         {
             // defaults
 
-            _serviceFactoryClient = AppServiceFactory.Current;
+            _serviceFactoryClient = AppServiceFactory.GetInstance();
 
             IsDeepSearch = false;
 

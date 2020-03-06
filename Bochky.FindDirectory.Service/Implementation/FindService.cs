@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bochky.FindDirectory.Common.Entities;
 using Bochky.FindDirectory.Common.Interfaces;
-using Bochky.FindDirectory.Service.Core;
 
 namespace Bochky.FindDirectory.Service.Implementation
 {
@@ -15,7 +14,7 @@ namespace Bochky.FindDirectory.Service.Implementation
         public FindService()
         {
 
-            _serviceFactoryServer = AppServiceFactory.Current;
+            _serviceFactoryServer = AppServiceFactory.GetInstance();
 
         }
         public async Task<SearchResult> FindAsync(

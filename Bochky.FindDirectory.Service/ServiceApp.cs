@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
-using Bochky.Utils.Logger;
 using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Service.Implementation;
-
 
 namespace Bochky.FindDirectory.Service
 {
@@ -11,35 +9,41 @@ namespace Bochky.FindDirectory.Service
     {
         private ServiceHost _host;
 
-        private readonly ILogger _logger;
+        private IServiceFactoryServer _serviceFactoryServer;
         
         public ServiceApp()
         {
-            _logger = AppServiceFactory.Current.Logger;
+
+           
+
+           
+
         }
 
         public void Start()
         {
-
-
+            
             try
             {
+                              
 
                 _host = new ServiceHost(typeof(FindService));
 
-                _host.Description.Behaviors.Add(new ErrorHandlerExtension(_logger));
+                _serviceFactoryServer = AppServiceFactory.GetInstance();
+
+                _host.Description.Behaviors.Add(new ErrorHandlerExtension(_serviceFactoryServer.Logger));
 
                 _host.Open();
 
 
-                _logger.LogInfo("Service started");
+                _serviceFactoryServer.Logger.LogInfo("Service started");
 
                 Console.WriteLine("Service started");
             }
             catch (Exception ex)
             {
 
-                _logger.LogError(ex);
+                _serviceFactoryServer.Logger.LogError(ex);
 
                 Console.WriteLine(ex.Message);
             }

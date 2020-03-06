@@ -9,8 +9,7 @@ namespace Bochky.FindDirectory
     sealed class AppServiceFactory : IServiceFactoryClient
     {
 
-
-        private static readonly Lazy<AppServiceFactory> _current = new Lazy<AppServiceFactory>(() => new AppServiceFactory());
+        private static readonly AppServiceFactory _current = new AppServiceFactory();
 
         private AppServiceFactory()
         {
@@ -46,10 +45,10 @@ namespace Bochky.FindDirectory
             Logger = logger;
         }
 
-        public static AppServiceFactory Current
+        public static AppServiceFactory GetInstance()
         {
-            get => _current.Value;
-        }       
+            return _current;
+        }
 
 
         public IFindService FindService { get; }

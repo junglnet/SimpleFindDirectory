@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Service.Implementation;
 using Bochky.FindDirectory.Service.Core;
@@ -9,7 +9,7 @@ namespace Bochky.FindDirectory.Service
     sealed class AppServiceFactory : IServiceFactoryServer
     {
 
-        private static readonly Lazy<AppServiceFactory> _current = new Lazy<AppServiceFactory>(() => new AppServiceFactory());
+        private static readonly AppServiceFactory _current = new AppServiceFactory();
 
         private AppServiceFactory()
         {
@@ -27,9 +27,9 @@ namespace Bochky.FindDirectory.Service
             Logger = logger;
         }
 
-        public static AppServiceFactory Current
+        public static AppServiceFactory GetInstance()
         {
-            get => _current.Value;
+            return _current;
         }
 
 
