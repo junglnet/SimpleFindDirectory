@@ -2,7 +2,7 @@
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel;
 using System;
-using Bochky.Utils.Logger;
+using Bochky.FindDirectory.Common.Interfaces;
 using System.ServiceModel.Description;
 using System.Collections.ObjectModel;
 

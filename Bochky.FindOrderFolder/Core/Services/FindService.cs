@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Bochky.FindDirectory.Common.Entities;
-using Bochky.FindDirectory.Interfaces;
 using Bochky.FindDirectory.Common.Interfaces;
 using Microsoft.VisualStudio.Threading;
 using System;
@@ -22,6 +21,7 @@ namespace Bochky.FindDirectory.Core.Services
             IFolderTypeConversionService folderTypeConversionService)
         {
             _findServiceContract = findServiceContract;
+            _folderTypeConversionService = folderTypeConversionService;
         }
         
 

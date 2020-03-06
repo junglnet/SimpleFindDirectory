@@ -43,7 +43,7 @@ namespace Bochky.FindDirectory
             SyncSearchFolderConfigurationService = syncSearchFolderConfigurationService;
 
             var logger = new NLogLogger("FindClient");
-            Logger = (Common.Interfaces.ILogger)logger;
+            Logger = logger;
         }
 
         public static AppServiceFactory Current
@@ -64,6 +64,6 @@ namespace Bochky.FindDirectory
 
         public ISyncSearchFolderConfigurationService SyncSearchFolderConfigurationService { get; }
 
-        public Common.Interfaces.ILogger Logger { get; }
+        public ILogger Logger { get; }
     }
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryClientT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryServerTest", "Bochky.FindDirectory.ServerTest\Bochky.FindDirectoryServerTest.csproj", "{C4708A04-CCC6-46F7-8E06-96FDD876D106}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.Utils", "..\Bochky.Utils\Bochky.Utils.csproj", "{47624CD8-B110-47AD-AA16-8C7743E7010A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4708A04-CCC6-46F7-8E06-96FDD876D106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47624CD8-B110-47AD-AA16-8C7743E7010A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47624CD8-B110-47AD-AA16-8C7743E7010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47624CD8-B110-47AD-AA16-8C7743E7010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47624CD8-B110-47AD-AA16-8C7743E7010A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

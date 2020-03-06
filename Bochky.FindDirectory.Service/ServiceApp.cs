@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using Bochky.Utils.Logger;
+using Bochky.FindDirectory.Common.Interfaces;
 using Bochky.FindDirectory.Service.Implementation;
 
 
