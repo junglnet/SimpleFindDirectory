@@ -8,7 +8,7 @@ namespace Bochky.FindDirectory.Common.Interfaces
     public interface IFindService
     {
         Task<SearchResult> FindAsync(
-            FindRequest findRequest,
+            string request,
             IEnumerable<Folder> foldersToFinding,
             bool isDeepSearch, CancellationToken token = default);
         

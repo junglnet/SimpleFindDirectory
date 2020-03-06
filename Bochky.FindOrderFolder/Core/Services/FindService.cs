@@ -22,16 +22,24 @@ namespace Bochky.FindDirectory.Core.Services
         
 
         public async Task<SearchResult> FindAsync(
-            FindRequest findRequest, 
+            string request, 
             IEnumerable<Folder> foldersToFinding, 
             bool isDeepSearch, 
-            CancellationToken token = default) 
-            => await _findServiceContract.FindAsync(
-                findRequest, 
-                foldersToFinding, 
+            CancellationToken token = default)
+        {
+
+            if (request == null) throw new Exception("Поисковый запрос пустой.");
+
+            return
+                await _findServiceContract.FindAsync(
+                new FindRequest(request),
+                foldersToFinding,
                 isDeepSearch)
                 .WithCancellation(token)
                 .WithTimeout(TimeSpan.FromSeconds(15));
+
+        }
+            
 
         public async Task<IEnumerable<Folder>> LoadDirectoriesAsync(CancellationToken token = default)
             => await _findServiceContract.LoadDirectoriesAsync()

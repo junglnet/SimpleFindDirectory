@@ -125,7 +125,7 @@ namespace Bochky.FindDirectory
             _searchPoints = t.ConvertToFolder(SearchPoint);
 
             var searchResult = await _findService.FindAsync(
-                     new FindRequest(Request), _searchPoints, IsDeepSearch, token);
+                     Request, _searchPoints, IsDeepSearch, token);
 
             var tg = new SaveChekedFolderListToXMLService();
 
