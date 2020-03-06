@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServiceFactory.cs" />
     <Compile Include="Core\LoadFindFolderFromXMLService.cs" />
     <Compile Include="Core\SearchEngine.cs" />
     <Compile Include="ErrorHandler.cs" />

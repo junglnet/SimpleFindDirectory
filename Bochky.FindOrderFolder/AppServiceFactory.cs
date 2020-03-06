@@ -6,7 +6,7 @@ using Bochky.Utils.Logger;
 
 namespace Bochky.FindDirectory
 {
-    class AppServiceFactory : IServiceFactoryClient
+    sealed class AppServiceFactory : IServiceFactoryClient
     {
 
 

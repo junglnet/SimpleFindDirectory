@@ -11,31 +11,35 @@ namespace Bochky.FindDirectory.Service
     {
         private ServiceHost _host;
 
-        private static ILogger logger;
+        private readonly ILogger _logger;
+        
+        public ServiceApp()
+        {
+            _logger = AppServiceFactory.Current.Logger;
+        }
 
         public void Start()
         {
 
-            logger = new NLogLogger("FindDirectory");            
 
             try
             {
 
                 _host = new ServiceHost(typeof(FindService));
 
-                _host.Description.Behaviors.Add(new ErrorHandlerExtension(logger));
+                _host.Description.Behaviors.Add(new ErrorHandlerExtension(_logger));
 
                 _host.Open();
 
 
-                logger.LogInfo("Service started");
+                _logger.LogInfo("Service started");
 
                 Console.WriteLine("Service started");
             }
             catch (Exception ex)
             {
 
-                logger.LogError(ex);
+                _logger.LogError(ex);
 
                 Console.WriteLine(ex.Message);
             }

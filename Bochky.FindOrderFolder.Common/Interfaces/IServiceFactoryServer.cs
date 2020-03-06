@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Bochky.FindDirectory.Common.Interfaces
 {
     public interface IServiceFactoryServer
@@ -12,6 +7,7 @@ namespace Bochky.FindDirectory.Common.Interfaces
         IFindServiceContract FindServiceContract { get; }        
         ILoadFindFolderService LoadFindFolderService { get; }        
         ISearchEngine SearchEngine { get; }
+        ILogger Logger { get; }
 
     }
 }
