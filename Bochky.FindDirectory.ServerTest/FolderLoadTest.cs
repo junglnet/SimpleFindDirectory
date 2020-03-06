@@ -39,9 +39,9 @@ namespace Bochky.FindDirectoryServerTest
 
 
 
-            ILoadFindFolderService loadFindFolderService = new LoadFindFolderFromXMLService();
+            ILoadFindFolderService loadFindFolderService = new LoadFindFolderFromXMLService("FindPoint.xml");
 
-            var loadedChekedFolder = await loadFindFolderService.LoadDirectoriesAsync("FindPoint.xml");
+            var loadedChekedFolder = await loadFindFolderService.LoadDirectoriesAsync();
 
             Assert.AreEqual(loadedChekedFolder.Count(), 6);
         }

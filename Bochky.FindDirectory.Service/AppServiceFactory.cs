@@ -20,7 +20,7 @@ namespace Bochky.FindDirectory.Service
             var findServiceContract = new FindService();
             FindServiceContract = findServiceContract;
 
-            var loadFindFolderService = new LoadFindFolderFromXMLService();
+            var loadFindFolderService = new LoadFindFolderFromXMLService("FindPoint.xml");
             LoadFindFolderService = loadFindFolderService;
 
             var logger = new NLogLogger("FindDirectory");

@@ -6,6 +6,6 @@ namespace Bochky.FindDirectory.Common.Interfaces
 {
     public interface ILoadFindFolderService
     {
-        Task<IEnumerable<Folder>> LoadDirectoriesAsync(string path);
+        Task<IEnumerable<Folder>> LoadDirectoriesAsync();
     }
 }

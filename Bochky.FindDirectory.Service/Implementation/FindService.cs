@@ -50,7 +50,7 @@ namespace Bochky.FindDirectory.Service.Implementation
                 return 
                     await _serviceFactoryServer
                         .LoadFindFolderService
-                        .LoadDirectoriesAsync("FindPoint.xml");
+                        .LoadDirectoriesAsync();
 
             }
             catch (Exception ex)

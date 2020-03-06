@@ -9,12 +9,18 @@ namespace Bochky.FindDirectory.Service.Core
 {
     public class LoadFindFolderFromXMLService : ILoadFindFolderService
     {
-        public async Task<IEnumerable<Folder>> LoadDirectoriesAsync(string filePath)
+        private readonly string _filepath;
+        public LoadFindFolderFromXMLService(string filePath)
+        {
+            _filepath = filePath;
+        }
+
+        public async Task<IEnumerable<Folder>> LoadDirectoriesAsync()
         {
 
             XmlSerializer formatter = new XmlSerializer(typeof(Folder[]));
 
-            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(_filepath, FileMode.OpenOrCreate))
             {
 
                 return await Task.Run(() => (Folder[])formatter.Deserialize(fs));
