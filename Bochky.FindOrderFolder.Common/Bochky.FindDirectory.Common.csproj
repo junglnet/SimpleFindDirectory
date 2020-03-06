@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\ChekedFolder.cs" />
+    <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\NullSearchRequestException.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Entities\FindRequest.cs" />
     <Compile Include="Entities\Folder.cs" />
