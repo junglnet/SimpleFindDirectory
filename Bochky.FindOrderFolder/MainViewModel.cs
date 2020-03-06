@@ -114,6 +114,8 @@ namespace Bochky.FindDirectory
 
         private async Task FindAsync(CancellationToken token)
         {
+
+                       
             Message = null;
 
             Folders.Clear();

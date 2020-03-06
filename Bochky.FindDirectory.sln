@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectory.Service", "Bochky.FindDirectory.Service\Bochky.FindDirectory.Service.csproj", "{590955F3-79F9-483C-9499-77C3E4E704EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryClientTest", "Bochky.FindDirectoryClientTest\Bochky.FindDirectoryClientTest.csproj", "{2A9569C0-216B-489D-960B-B0B34CA2B864}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryClientTest", "Bochky.FindDirectory.ClientTest\Bochky.FindDirectoryClientTest.csproj", "{2A9569C0-216B-489D-960B-B0B34CA2B864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryServerTest", "Bochky.FindDirectoryServer\Bochky.FindDirectoryServerTest.csproj", "{C4708A04-CCC6-46F7-8E06-96FDD876D106}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryServerTest", "Bochky.FindDirectory.ServerTest\Bochky.FindDirectoryServerTest.csproj", "{C4708A04-CCC6-46F7-8E06-96FDD876D106}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

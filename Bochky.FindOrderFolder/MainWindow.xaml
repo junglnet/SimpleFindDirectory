@@ -58,9 +58,14 @@
                 
                 <Label Content="Поисковый запрос: " 
                        Style="{StaticResource SimpleLabel}"/>
-                
+
                 <TextBox Style="{StaticResource SimpleTextBox}"  
-                         Text="{Binding Request, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding Request, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding FindCommand}" Key="Enter"/>
+                    </TextBox.InputBindings>
+                </TextBox>
 
                 <TextBlock Style="{StaticResource ErrorTextBlock}" Text="{Binding Message}"/>
 
