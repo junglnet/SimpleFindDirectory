@@ -15,25 +15,23 @@ namespace Bochky.FindDirectory
 {
     public class MainViewModel : NotifyPropertyChanged
     {
+        private readonly IServiceFactoryClient _serviceFactoryClient;
         private string request;
         private string message;
         private bool isDeepSearch;
-        private Folder currentFolder;
-        private readonly IFindService _findService;
-        private IEnumerable<Folder> _searchPoints; 
-        private ILogger logger;
+        private Folder currentFolder;               
+       
 
 
         public MainViewModel()
         {
             // defaults
-            _findService = new FindService(new FindServiceClient());
 
-            
+            _serviceFactoryClient = AppServiceFactory.Current;
 
             IsDeepSearch = false;
 
-            logger = new NLogLogger("FindClient");
+           
 
             Folders = new ObservableCollection<Folder>();
 
@@ -44,22 +42,14 @@ namespace Bochky.FindDirectory
                 try
                 {
 
-                    ISyncSearchFolderConfigurationService syncSearchFolderConfigurationService
-                    = new SyncSearchFolderConfigurationService(
-                        new LoadChekedFolderListFromXMLService(),
-                        new FolderTypeConversionService(),
-                        _findService,
-                        "localconfig.xml"
-                        );
-
-                    var result = await syncSearchFolderConfigurationService.Pull();
+                    var result
+                    = await _serviceFactoryClient.SyncSearchFolderConfigurationService.Pull();
+                    
 
                     foreach (var item in result)
                     {
                         SearchPoint.Add(item);
                     }
-
-
 
                 }
                 catch (Exception ex)
@@ -67,7 +57,7 @@ namespace Bochky.FindDirectory
 
                     Message = ex.Message;
 
-                    logger.LogError(ex);
+                    _serviceFactoryClient.Logger.LogError(ex);
                 }
             
             
@@ -87,7 +77,7 @@ namespace Bochky.FindDirectory
 
                     Message = ex.Message;
 
-                    logger.LogError(ex);
+                    _serviceFactoryClient.Logger.LogError(ex);
                 }
 
             });
@@ -106,7 +96,7 @@ namespace Bochky.FindDirectory
 
                     Message = ex.Message;
 
-                    logger.LogError(ex);
+                    _serviceFactoryClient.Logger.LogError(ex);
                 }
 
             });
@@ -120,16 +110,19 @@ namespace Bochky.FindDirectory
 
             Folders.Clear();
 
-            var t = new FolderTypeConversionService();
+            var _searchPoints =
+                _serviceFactoryClient.FolderTypeConversionService.ConvertToFolder(SearchPoint);
 
-            _searchPoints = t.ConvertToFolder(SearchPoint);
+            var searchResult = 
+                await _serviceFactoryClient.FindService.FindAsync(
+                     Request, 
+                     _searchPoints, 
+                     IsDeepSearch, token);
+                      
 
-            var searchResult = await _findService.FindAsync(
-                     Request, _searchPoints, IsDeepSearch, token);
-
-            var tg = new SaveChekedFolderListToXMLService();
-
-            await tg.SaveChekedFolderList(SearchPoint, "localconfig.xml");
+            await _serviceFactoryClient
+                .SaveChekedFolderListService
+                .SaveChekedFolderList(SearchPoint, "localconfig.xml");
 
             if (searchResult.HaveResult)
             {
@@ -208,8 +201,7 @@ namespace Bochky.FindDirectory
         }
 
         public ICommand LoadCommand { get; }
-        public ICommand FindCommand { get; }
-        
+        public ICommand FindCommand { get; }        
         public ICommand OpenItemCommand { get; }
 
     }

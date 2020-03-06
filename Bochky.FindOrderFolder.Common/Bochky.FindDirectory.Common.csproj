@@ -57,8 +57,11 @@
     <Compile Include="Interfaces\IFolderTypeConversionService.cs" />
     <Compile Include="Interfaces\ILoadChekedFolderListService.cs" />
     <Compile Include="Interfaces\ILoadFindFolderService.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\ISaveChekedFolderListService.cs" />
     <Compile Include="Interfaces\ISearchEngine.cs" />
+    <Compile Include="Interfaces\IServiceFactoryServer.cs" />
+    <Compile Include="Interfaces\IServiceFactoryClient.cs" />
     <Compile Include="Interfaces\ISyncSearchFolderConfigurationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
