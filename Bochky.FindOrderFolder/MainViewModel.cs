@@ -85,7 +85,8 @@ namespace Bochky.FindDirectory
                 try
                 {
 
-                    await OpenItem(CurrentFolder, token);
+                    if (CurrentFolder!= null)
+                        await OpenItem(CurrentFolder, token);
 
                 }
 
