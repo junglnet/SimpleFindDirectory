@@ -51,8 +51,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
-            <ColumnDefinition Width="270" />
+            <ColumnDefinition Width="350" />
+            <ColumnDefinition Width="210" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="10 0 10 10">
@@ -102,10 +102,10 @@
                                 </Grid.InputBindings>
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
-                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <TextBlock 
-                                            MaxWidth="265"
+                                            Grid.Row="1"
+                                            MaxWidth="312"
                                             Text="{Binding Path=DirectoryPath}" 
                                             TextWrapping="Wrap" >
                                 </TextBlock>
