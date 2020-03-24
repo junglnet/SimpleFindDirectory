@@ -114,13 +114,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bochky.Utils\Bochky.Utils.csproj">
-      <Project>{47624cd8-b110-47ad-aa16-8c7743e7010a}</Project>
-      <Name>Bochky.Utils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bochky.FindOrderFolder.Common\Bochky.FindDirectory.Common.csproj">
       <Project>{f634a6fd-ad28-4471-a14b-a4ac629cc0f5}</Project>
       <Name>Bochky.FindDirectory.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bochky.Utils\Bochky.Utils.csproj">
+      <Project>{47624cd8-b110-47ad-aa16-8c7743e7010a}</Project>
+      <Name>Bochky.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

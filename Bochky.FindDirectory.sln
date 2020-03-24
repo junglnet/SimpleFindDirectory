@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryClientT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.FindDirectoryServerTest", "Bochky.FindDirectory.ServerTest\Bochky.FindDirectoryServerTest.csproj", "{C4708A04-CCC6-46F7-8E06-96FDD876D106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.Utils", "..\Bochky.Utils\Bochky.Utils.csproj", "{47624CD8-B110-47AD-AA16-8C7743E7010A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bochky.Utils", "Bochky.Utils\Bochky.Utils.csproj", "{47624CD8-B110-47AD-AA16-8C7743E7010A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
