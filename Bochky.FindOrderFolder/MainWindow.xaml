@@ -42,6 +42,7 @@
         <Style x:Key="CheckedStyle" TargetType="CheckBox">                       
             <Setter Property="Margin" Value="0 5 0 5" />            
         </Style>
+        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -91,29 +92,27 @@
                     VirtualizingPanel.IsVirtualizing="False"
                     VerticalAlignment="Top"
                     Height="240">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn 
-                                    Header="Результаты поиска">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock 
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2">
+                                <Grid.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick" 
+                                                  Command="{Binding  ElementName=FoldersListView, Path=DataContext.OpenItemCommand}"
+                                                  CommandParameter="{Binding ElementName=FoldersListView, Path=SelectedItem}" />
+                                </Grid.InputBindings>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock 
                                             MaxWidth="265"
                                             Text="{Binding Path=DirectoryPath}" 
-                                            TextWrapping="Wrap" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                    <!--Обработка события двойной клик-->
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDoubleClick">
-                            <i:InvokeCommandAction
-                            Command="{Binding OpenItemCommand}"
-                            CommandParameter="{Binding ElementName=FoldersListView, Path=SelectedItem}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                                            TextWrapping="Wrap" >
+                                </TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
                 </ListView>
 
 
