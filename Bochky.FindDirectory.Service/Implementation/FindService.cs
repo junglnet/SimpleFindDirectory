@@ -48,7 +48,7 @@ namespace Bochky.FindDirectory.Service.Implementation
 
                 return 
                     await _serviceFactoryServer
-                        .LoadFindFolderService
+                        .LoadFolderFolder
                         .LoadDirectoriesAsync();
 
             }

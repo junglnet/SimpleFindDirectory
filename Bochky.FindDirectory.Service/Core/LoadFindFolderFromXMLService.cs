@@ -7,10 +7,10 @@ using System.Xml.Serialization;
 
 namespace Bochky.FindDirectory.Service.Core
 {
-    public class LoadFindFolderFromXMLService : ILoadFindFolderService
+    public class LoadFolderListFromXML : ILoadFolderList
     {
         private readonly string _filepath;
-        public LoadFindFolderFromXMLService(string filePath)
+        public LoadFolderListFromXML(string filePath)
         {
             _filepath = filePath;
         }

@@ -20,8 +20,8 @@ namespace Bochky.FindDirectory.Service
             var findServiceContract = new FindService();
             FindServiceContract = findServiceContract;
 
-            var loadFindFolderService = new LoadFindFolderFromXMLService("FindPoint.xml");
-            LoadFindFolderService = loadFindFolderService;
+            var loadFolderFolder = new LoadFolderListFromXML("FindPoint.xml");
+            LoadFolderFolder = loadFolderFolder;
 
             var logger = new NLogLogger("FindDirectory");
             Logger = logger;
@@ -32,10 +32,9 @@ namespace Bochky.FindDirectory.Service
             return _current;
         }
 
-
         public IFindServiceContract FindServiceContract { get; }
 
-        public ILoadFindFolderService LoadFindFolderService { get; }
+        public ILoadFolderList LoadFolderFolder { get; }
 
         public ISearchEngine SearchEngine { get; }
 
