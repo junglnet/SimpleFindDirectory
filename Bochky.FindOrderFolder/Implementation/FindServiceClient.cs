@@ -13,7 +13,7 @@ namespace Bochky.FindDirectory.Implementation
 
         public FindServiceClient()
         {
-            _channelFactory = new ClientChannelFactory<IFindServiceContract>("FindService"); ;
+            _channelFactory = new ClientChannelFactory<IFindServiceContract>("FindService");           
         }
 
         public async Task<SearchResult> FindAsync(

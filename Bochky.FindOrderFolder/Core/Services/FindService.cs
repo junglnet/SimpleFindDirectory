@@ -34,13 +34,28 @@ namespace Bochky.FindDirectory.Core.Services
 
             if (request == null) throw new NullSearchRequestException();            
 
-            return
+            if(isDeepSearch)
+            {
+                return
                 await _findServiceContract.FindAsync(
                 new FindRequest(request),
                 _folderTypeConversionService.ConvertToFolder(foldersToFinding),
                 isDeepSearch)
                 .WithCancellation(token)
-                .WithTimeout(TimeSpan.FromSeconds(15));
+                .WithTimeout(TimeSpan.FromSeconds(600));
+            }
+            else
+            {
+                return
+                await _findServiceContract.FindAsync(
+                new FindRequest(request),
+                _folderTypeConversionService.ConvertToFolder(foldersToFinding),
+                isDeepSearch)
+                .WithCancellation(token)
+                .WithTimeout(TimeSpan.FromSeconds(120));
+            }
+
+            
 
         }
             
